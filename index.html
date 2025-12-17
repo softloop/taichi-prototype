@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tai Chi Academy - Prototype</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Sora:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Sora', sans-serif; }
+    button { cursor: pointer; transition: all 0.2s ease; }
+    button:hover { opacity: 0.9; transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+const { useState } = React;
+
+const colors = {
+  primary: '#C84B31',
+  primaryDark: '#A13A24',
+  primaryLight: '#E8D5D0',
+  background: '#F7F6F5',
+  backgroundAlt: '#EFEEEC',
+  dark: '#1A1A1A',
+  text: '#1A1A1A',
+  textMuted: '#666666',
+  textLight: '#888888',
+  white: '#FFFFFF',
+  border: '#E5E3E0',
+};
+
+const MegaMenu = ({ currentPage, setCurrentPage }) => {
+  const [activeMenu, setActiveMenu] = useState(null);
+  const menuData = {
+    kurse: { label: 'KURSE', items: [
+      { id: 'kurse-online', label: 'Online', desc: 'Lerne Tai Chi zuhause' },
+      { id: 'kurse-live', label: 'Live & Zoom', desc: 'Gruppenunterricht & Webinare' },
+      { id: 'kurse-praesenz', label: 'Präsenz', desc: 'Intensivseminare & Retreats' },
+    ]},
+    methode: { label: 'METHODE', items: [
+      { id: 'methode-innere-kraft', label: 'Innere Kraft', desc: 'Im Alltag und Kampfkunst' },
+      { id: 'methode-atemtyp', label: 'Atemtyp Tai Chi', desc: 'Sonne und Mond' },
+      { id: 'methode-test', label: 'Atemtyp-Test', desc: 'Einatmer oder Ausatmer?' },
+    ]},
+    'ueber-uns': { label: 'ÜBER UNS', items: [
+      { id: 'ueber-meister', label: 'Der Meister', desc: '6. Generation Yang-Tradition' },
+      { id: 'ueber-tradition', label: 'Tradition & Moderne', desc: 'Unsere Philosophie' },
+      { id: 'ueber-lehrer', label: 'Zertifizierte Lehrer', desc: 'In Deiner Nähe' },
+    ]},
+    wissen: { label: 'WISSEN', items: [
+      { id: 'wissen-buecher', label: 'Bücher', desc: 'Publikationen' },
+      { id: 'wissen-blog', label: 'Blog', desc: 'Artikel' },
+      { id: 'wissen-filmarchiv', label: 'Filmarchiv', desc: 'Videos' },
+    ]}
+  };
+  return (
+    <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 60px', background: colors.white, position: 'sticky', top: 0, zIndex: 100, borderBottom: `1px solid ${colors.border}` }}>
+      <div onClick={() => setCurrentPage('home')} style={{ fontFamily: '"Marcellus", serif', fontSize: '1.4rem', color: colors.dark, cursor: 'pointer', letterSpacing: '0.1em' }}>TAI CHI ACADEMY</div>
+      <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
+        {Object.entries(menuData).map(([key, menu]) => (
+          <div key={key} style={{ position: 'relative' }} onMouseEnter={() => setActiveMenu(key)} onMouseLeave={() => setActiveMenu(null)}>
+            <button onClick={() => setCurrentPage(key)} style={{ background: 'none', border: 'none', color: currentPage.startsWith(key) ? colors.primary : colors.text, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.08em', cursor: 'pointer', padding: '8px 0', borderBottom: currentPage.startsWith(key) ? `2px solid ${colors.primary}` : '2px solid transparent' }}>{menu.label}</button>
+            {activeMenu === key && (
+              <div style={{ position: 'absolute', top: '100%', left: '-20px', background: colors.white, border: `1px solid ${colors.border}`, boxShadow: '0 10px 40px rgba(0,0,0,0.1)', padding: '15px', minWidth: '280px', zIndex: 1000 }}>
+                {menu.items.map(item => (
+                  <div key={item.id} onClick={() => { setCurrentPage(item.id); setActiveMenu(null); }} style={{ padding: '12px 15px', cursor: 'pointer', borderRadius: '4px', marginBottom: '5px' }} onMouseEnter={(e) => e.currentTarget.style.background = colors.backgroundAlt} onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
+                    <div style={{ fontFamily: '"Marcellus", serif', fontSize: '1rem', color: colors.dark, marginBottom: '4px' }}>{item.label}</div>
+                    <div style={{ fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', color: colors.textMuted }}>{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+        <button style={{ background: colors.primary, border: 'none', color: colors.white, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.08em', padding: '12px 28px', cursor: 'pointer' }}>LOGIN</button>
+      </div>
+    </nav>
+  );
+};
+
+const Footer = ({ setCurrentPage }) => (
+  <footer style={{ background: colors.dark, padding: '60px', color: colors.white }}>
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '40px', maxWidth: '1200px', margin: '0 auto' }}>
+      <div>
+        <h4 style={{ fontFamily: '"Marcellus", serif', marginBottom: '20px', fontSize: '1.1rem', fontWeight: 400 }}>TAI CHI ACADEMY</h4>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', lineHeight: 1.8 }}>Deutschlands älteste Tai-Chi-Schule.</p>
+      </div>
+      <div>
+        <h5 style={{ fontFamily: '"Sora", sans-serif', marginBottom: '15px', fontSize: '0.9rem', fontWeight: 500 }}>Kurse</h5>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {['Online-Kurse', 'Live & Zoom', 'Präsenzkurse'].map(item => (<span key={item} style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', cursor: 'pointer' }}>{item}</span>))}
+        </div>
+      </div>
+      <div>
+        <h5 style={{ fontFamily: '"Sora", sans-serif', marginBottom: '15px', fontSize: '0.9rem', fontWeight: 500 }}>Rechtliches</h5>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {['Impressum', 'Datenschutz', 'AGB'].map(item => (<span key={item} style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', cursor: 'pointer' }}>{item}</span>))}
+        </div>
+      </div>
+      <div>
+        <h5 style={{ fontFamily: '"Sora", sans-serif', marginBottom: '15px', fontSize: '0.9rem', fontWeight: 500 }}>Kontakt</h5>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', lineHeight: 1.8 }}>info@tai-chi.academy</p>
+      </div>
+    </div>
+    <div style={{ textAlign: 'center', marginTop: '40px', paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.2)', fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem' }}>© 2025 Tai Chi Academy</div>
+  </footer>
+);
+
+const CTAButton = ({ children, variant = 'primary', onClick }) => (
+  <button onClick={onClick} style={{ background: variant === 'primary' ? colors.primary : 'transparent', border: variant === 'primary' ? 'none' : `1px solid ${colors.dark}`, color: variant === 'primary' ? colors.white : colors.dark, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.08em', padding: '16px 40px', cursor: 'pointer' }}>{children}</button>
+);
+
+const SectionTitle = ({ subtitle, title }) => (
+  <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+    {subtitle && <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase' }}>{subtitle}</span>}
+    <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2.5rem', color: colors.dark, marginTop: subtitle ? '10px' : 0, fontWeight: 400 }}>{title}</h2>
+  </div>
+);
+
+const PageHero = ({ title, subtitle, description }) => (
+  <section style={{ padding: '120px 60px 80px', textAlign: 'center', background: colors.white }}>
+    {subtitle && <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, letterSpacing: '0.2em' }}>{subtitle}</span>}
+    <h1 style={{ fontFamily: '"Marcellus", serif', fontSize: '3rem', color: colors.dark, fontWeight: 400, margin: subtitle ? '15px 0 20px' : '0 0 20px' }}>{title}</h1>
+    {description && <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '1.1rem', maxWidth: '650px', margin: '0 auto', lineHeight: 1.7 }}>{description}</p>}
+  </section>
+);
+
+const HomePage = ({ setCurrentPage }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <section style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', background: colors.background }}>
+      <div style={{ position: 'absolute', right: 0, top: 0, width: '50%', height: '100%', opacity: 0.05, background: `radial-gradient(ellipse at right, ${colors.primary} 0%, transparent 70%)` }} />
+      <div style={{ textAlign: 'center', zIndex: 10, padding: '0 20px' }}>
+        <p style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.25em', marginBottom: '20px' }}>DEUTSCHLANDS ÄLTESTE TAI-CHI-SCHULE</p>
+        <h1 style={{ fontFamily: '"Marcellus", serif', fontSize: '4rem', color: colors.dark, fontWeight: 400, lineHeight: 1.2, marginBottom: '30px' }}>Entdecke Deine<br /><span style={{ color: colors.primary }}>Innere Kraft</span></h1>
+        <p style={{ color: colors.textMuted, fontFamily: '"Sora", sans-serif', fontSize: '1.1rem', maxWidth: '550px', margin: '0 auto 40px', lineHeight: 1.8 }}>Lerne authentisches Yang-Stil Tai Chi von Großmeister Frieder Anders – individuell abgestimmt auf Deinen Atemtyp.</p>
+        <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+          <CTAButton onClick={() => setCurrentPage('kurse-online')}>KURSE ENTDECKEN</CTAButton>
+          <CTAButton variant="secondary" onClick={() => setCurrentPage('methode-atemtyp')}>MEHR ERFAHREN</CTAButton>
+        </div>
+      </div>
+    </section>
+    <section style={{ padding: '100px 60px', background: colors.white }}>
+      <SectionTitle subtitle="Warum Tai Chi" title="Erlebe die Veränderung" />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '40px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[{ icon: '☯', title: 'Innere Kraft', desc: 'Erlebe, wie Deine innere Kraft aus dem Nicht-Tun erwächst.' }, { icon: '◎', title: 'Ruhe & Balance', desc: 'Erreiche tiefe Ruhe und emotionale Balance.' }, { icon: '✦', title: 'Gesundheit', desc: 'Verbessere Deine Gesundheit durch Bewegung und Atmung.' }].map((item, i) => (
+          <div key={i} style={{ padding: '40px', background: colors.background, textAlign: 'center', border: `1px solid ${colors.border}` }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '20px', color: colors.primary }}>{item.icon}</div>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '15px', fontWeight: 400 }}>{item.title}</h3>
+            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.8, fontSize: '0.9rem' }}>{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section style={{ padding: '80px 60px', background: colors.dark, textAlign: 'center' }}>
+      <blockquote style={{ fontFamily: '"Marcellus", serif', fontSize: '1.6rem', color: colors.white, fontStyle: 'italic', maxWidth: '800px', margin: '0 auto', lineHeight: 1.8 }}>„Folge nicht den Fußstapfen der Meister.<br />Suche, was sie gesucht haben."</blockquote>
+      <p style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.6)', marginTop: '20px', fontSize: '0.85rem' }}>— Matsuo Bashō</p>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+const SimplePage = ({ setCurrentPage, title, subtitle }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <PageHero title={title} subtitle={subtitle} description="Diese Seite wird noch mit Inhalten gefüllt." />
+    <section style={{ padding: '60px', textAlign: 'center' }}>
+      <CTAButton onClick={() => setCurrentPage('home')}>← Zurück zur Startseite</CTAButton>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+function TaiChiAcademyPrototype() {
+  const [currentPage, setCurrentPage] = useState('home');
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
+      case 'kurse': return <SimplePage setCurrentPage={setCurrentPage} title="Unsere Kurse" subtitle="KURSE" />;
+      case 'kurse-online': return <SimplePage setCurrentPage={setCurrentPage} title="Online-Kurse" subtitle="KURSE" />;
+      case 'kurse-live': return <SimplePage setCurrentPage={setCurrentPage} title="Live & Zoom" subtitle="KURSE" />;
+      case 'kurse-praesenz': return <SimplePage setCurrentPage={setCurrentPage} title="Präsenzkurse" subtitle="KURSE" />;
+      case 'methode': return <SimplePage setCurrentPage={setCurrentPage} title="Die Methode" subtitle="METHODE" />;
+      case 'methode-innere-kraft': return <SimplePage setCurrentPage={setCurrentPage} title="Innere Kraft" subtitle="METHODE" />;
+      case 'methode-atemtyp': return <SimplePage setCurrentPage={setCurrentPage} title="Atemtyp Tai Chi" subtitle="METHODE" />;
+      case 'methode-test': return <SimplePage setCurrentPage={setCurrentPage} title="Atemtyp-Test" subtitle="METHODE" />;
+      case 'ueber-uns': return <SimplePage setCurrentPage={setCurrentPage} title="Der Meister" subtitle="ÜBER UNS" />;
+      case 'ueber-meister': return <SimplePage setCurrentPage={setCurrentPage} title="Der Meister" subtitle="ÜBER UNS" />;
+      case 'ueber-tradition': return <SimplePage setCurrentPage={setCurrentPage} title="Tradition & Moderne" subtitle="ÜBER UNS" />;
+      case 'ueber-lehrer': return <SimplePage setCurrentPage={setCurrentPage} title="Zertifizierte Lehrer" subtitle="ÜBER UNS" />;
+      case 'wissen': return <SimplePage setCurrentPage={setCurrentPage} title="Wissen" subtitle="WISSEN" />;
+      case 'wissen-buecher': return <SimplePage setCurrentPage={setCurrentPage} title="Bücher" subtitle="WISSEN" />;
+      case 'wissen-blog': return <SimplePage setCurrentPage={setCurrentPage} title="Blog" subtitle="WISSEN" />;
+      case 'wissen-filmarchiv': return <SimplePage setCurrentPage={setCurrentPage} title="Filmarchiv" subtitle="WISSEN" />;
+      default: return <HomePage setCurrentPage={setCurrentPage} />;
+    }
+  };
+  return (
+    <div style={{ fontFamily: '"Sora", sans-serif', background: colors.background, minHeight: '100vh', color: colors.text }}>
+      <MegaMenu currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {renderPage()}
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<TaiChiAcademyPrototype />);
+  </script>
+</body>
+</html>
