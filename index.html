@@ -65,7 +65,7 @@ const MegaMenu = ({ currentPage, setCurrentPage }) => {
       <div style={{ display: 'flex', gap: '40px', alignItems: 'center' }}>
         {Object.entries(menuData).map(([key, menu]) => (
           <div key={key} style={{ position: 'relative' }} onMouseEnter={() => setActiveMenu(key)} onMouseLeave={() => setActiveMenu(null)}>
-            <button onClick={() => setCurrentPage(key)} style={{ background: 'none', border: 'none', color: currentPage.startsWith(key) ? colors.primary : colors.text, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.08em', cursor: 'pointer', padding: '8px 0', borderBottom: currentPage.startsWith(key) ? `2px solid ${colors.primary}` : '2px solid transparent' }}>{menu.label}</button>
+            <button onClick={() => setCurrentPage(key)} style={{ background: 'none', border: 'none', color: currentPage.startsWith(key) || currentPage.startsWith(key.split('-')[0]) ? colors.primary : colors.text, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500, letterSpacing: '0.08em', cursor: 'pointer', padding: '8px 0', borderBottom: currentPage.startsWith(key) || currentPage.startsWith(key.split('-')[0]) ? `2px solid ${colors.primary}` : '2px solid transparent' }}>{menu.label}</button>
             {activeMenu === key && (
               <div style={{ position: 'absolute', top: '100%', left: '-20px', background: colors.white, border: `1px solid ${colors.border}`, boxShadow: '0 10px 40px rgba(0,0,0,0.1)', padding: '15px', minWidth: '320px', zIndex: 1000 }}>
                 {menu.items.map(item => (
@@ -140,8 +140,8 @@ const HomePage = ({ setCurrentPage }) => (
         <h1 style={{ fontFamily: '"Marcellus", serif', fontSize: '4rem', color: colors.dark, fontWeight: 400, lineHeight: 1.2, marginBottom: '30px' }}>Entdecke Deine<br /><span style={{ color: colors.primary }}>Innere Kraft</span></h1>
         <p style={{ color: colors.textMuted, fontFamily: '"Sora", sans-serif', fontSize: '1.1rem', maxWidth: '550px', margin: '0 auto 40px', lineHeight: 1.8 }}>Lerne authentisches Yang-Stil Tai Chi von Großmeister Frieder Anders – individuell abgestimmt auf Deinen Atemtyp.</p>
         <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-          <CTAButton onClick={() => setCurrentPage('kurse-online')}>KURSE ENTDECKEN</CTAButton>
-          <CTAButton variant="secondary" onClick={() => setCurrentPage('methode-atemtyp')}>MEHR ERFAHREN</CTAButton>
+          <CTAButton onClick={() => setCurrentPage('kurse')}>KURSE ENTDECKEN</CTAButton>
+          <CTAButton variant="secondary" onClick={() => setCurrentPage('methode')}>MEHR ERFAHREN</CTAButton>
         </div>
       </div>
     </section>
@@ -200,32 +200,120 @@ const HomePage = ({ setCurrentPage }) => (
   </div>
 );
 
-const KurseOnlinePage = ({ setCurrentPage }) => (
+// ==================== ÜBERSICHTSSEITEN ====================
+
+const KurseOverviewPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
-    <PageHero title="Lerne Tai Chi zuhause" description="Als erste Tai-Chi-Schule Deutschlands bringt die Tai Chi Academy unter der Leitung von Großmeister Frieder Anders eine einzigartige Lehrmethode zu Dir nach Hause." />
-    <section style={{ padding: '40px 60px 80px', background: colors.white }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', maxWidth: '900px', margin: '0 auto' }}>
-        <div style={{ background: colors.background, padding: '30px', border: `1px solid ${colors.border}` }}>
-          <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '10px' }}>Tai Chi Kurzform & Langform</h3>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7 }}>Lerne die klassischen Formen der Yang-Familientradition – Schritt für Schritt zur äußeren Meisterschaft.</p>
-        </div>
-        <div style={{ background: colors.background, padding: '30px', border: `1px solid ${colors.border}` }}>
-          <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '10px' }}>Die 7 Tore zur inneren Kraft</h3>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7 }}>Vertiefe Deine Praxis mit den Geheimnissen der inneren Arbeit – individuell für Deinen Atemtyp.</p>
-        </div>
+    <PageHero title="Unsere Kurse" description="Finde Deinen Weg zur inneren Kraft – online, live oder vor Ort. Alle Kurse basieren auf der Atemtyp-Methode." />
+    <section style={{ padding: '60px', background: colors.background }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[
+          { id: 'kurse-online', icon: '🎬', title: 'Online', desc: 'Lerne Tai Chi zuhause – Kurzform, Langform & die 7 Vertiefungsstufen. In Deinem Tempo, für Deinen Atemtyp.' },
+          { id: 'kurse-live', icon: '📺', title: 'Live & Zoom', desc: 'Gruppenunterricht, Meetings und Webinare – lerne und übe gemeinsam in Echtzeit.' },
+          { id: 'kurse-praesenz', icon: '🏛', title: 'Präsenz', desc: 'Intensivseminare, Retreats und Ausbildungen – erlebe Tai Chi vor Ort mit Meister Anders.' },
+        ].map((item, i) => (
+          <div key={i} onClick={() => setCurrentPage(item.id)} style={{ background: colors.white, padding: '40px', border: `1px solid ${colors.border}`, cursor: 'pointer', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border}>
+            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>{item.icon}</div>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.4rem', marginBottom: '15px' }}>{item.title}</h3>
+            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>{item.desc}</p>
+            <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500 }}>KURSE ANSEHEN →</span>
+          </div>
+        ))}
       </div>
     </section>
+    <section style={{ padding: '60px', background: colors.white, textAlign: 'center' }}>
+      <h2 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '2rem', marginBottom: '20px' }}>Nicht sicher, wo Du anfangen sollst?</h2>
+      <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '30px', maxWidth: '500px', margin: '0 auto 30px' }}>Starte kostenlos mit unserer Kurzform – der perfekte Einstieg für beide Atemtypen.</p>
+      <CTAButton onClick={() => setCurrentPage('kurse-online')}>KOSTENLOS STARTEN</CTAButton>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+const MethodeOverviewPage = ({ setCurrentPage }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <PageHero subtitle="WAS UNS EINZIGARTIG MACHT" title="Die Methode" description="Anders Atemtyp Tai Chi verbindet authentische Yang-Tradition mit der individuellen Ausrichtung auf Deinen Atemtyp." />
+    <section style={{ padding: '60px', background: colors.background }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[
+          { id: 'methode-innere-kraft', icon: '⚡', title: 'Innere Kraft', desc: 'Was innere Kraft bedeutet – im Alltag und in der Kampfkunst Tai Chi. Warum Entspannung stärker ist als Muskelkraft.' },
+          { id: 'methode-atemtyp', icon: '☯', title: 'Atemtyp Tai Chi', desc: 'Wie Sonne und Mond Deinen Atemtyp prägen und warum nur Tai Chi im eigenen Atemtyp zur inneren Kraft führt.' },
+          { id: 'methode-test', icon: '🔍', title: 'Atemtyp-Test', desc: 'Finde heraus, ob Du Einatmer (lunar) oder Ausatmer (solar) bist – und beginne Deine individuelle Praxis.' },
+        ].map((item, i) => (
+          <div key={i} onClick={() => setCurrentPage(item.id)} style={{ background: colors.white, padding: '40px', border: `1px solid ${colors.border}`, cursor: 'pointer', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border}>
+            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>{item.icon}</div>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.4rem', marginBottom: '15px' }}>{item.title}</h3>
+            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>{item.desc}</p>
+            <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500 }}>MEHR ERFAHREN →</span>
+          </div>
+        ))}
+      </div>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+const UeberUnsOverviewPage = ({ setCurrentPage }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <PageHero title="Über Uns" description="Deutschlands älteste Tai-Chi-Schule – gegründet auf dem Fundament authentischer Yang-Tradition." />
+    <section style={{ padding: '60px', background: colors.background }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[
+          { id: 'ueber-meister', icon: '👤', title: 'Der Meister', desc: 'Großmeister Frieder Anders – der erste Europäer, der als Meister der Yang-Familientradition anerkannt wurde.' },
+          { id: 'ueber-tradition', icon: '🏛', title: 'Tradition & Moderne', desc: 'Unsere Philosophie zwischen authentischer Überlieferung und westlichem Individualismus.' },
+          { id: 'ueber-lehrer', icon: '🗺', title: 'Zertifizierte Lehrer', desc: 'Finde einen Lehrer der Tai Chi Academy in Deiner Nähe für regelmäßigen Unterricht.' },
+        ].map((item, i) => (
+          <div key={i} onClick={() => setCurrentPage(item.id)} style={{ background: colors.white, padding: '40px', border: `1px solid ${colors.border}`, cursor: 'pointer', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border}>
+            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>{item.icon}</div>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.4rem', marginBottom: '15px' }}>{item.title}</h3>
+            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>{item.desc}</p>
+            <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500 }}>MEHR ERFAHREN →</span>
+          </div>
+        ))}
+      </div>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+const WissenOverviewPage = ({ setCurrentPage }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <PageHero title="Wissen" description="Artikel, Bücher und Videos rund um Tai Chi, Atemtypen und innere Kraft." />
+    <section style={{ padding: '60px', background: colors.background }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[
+          { id: 'wissen-buecher', icon: '📚', title: 'Bücher', desc: 'Publikationen von Meister Anders – Lehrbücher und Grundlagenwerke zum Atemtyp Tai Chi.' },
+          { id: 'wissen-blog', icon: '✍️', title: 'Blog', desc: 'Artikel zu Theorie und Praxis – von den Grundlagen bis zu fortgeschrittenen Themen.' },
+          { id: 'wissen-filmarchiv', icon: '🎬', title: 'Filmarchiv', desc: 'Videos, Interviews und Demonstrationen – die Form in Bewegung erleben.' },
+        ].map((item, i) => (
+          <div key={i} onClick={() => setCurrentPage(item.id)} style={{ background: colors.white, padding: '40px', border: `1px solid ${colors.border}`, cursor: 'pointer', textAlign: 'center', transition: 'all 0.3s ease' }} onMouseEnter={(e) => e.currentTarget.style.borderColor = colors.primary} onMouseLeave={(e) => e.currentTarget.style.borderColor = colors.border}>
+            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>{item.icon}</div>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.4rem', marginBottom: '15px' }}>{item.title}</h3>
+            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7, marginBottom: '20px' }}>{item.desc}</p>
+            <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', fontWeight: 500 }}>ANSEHEN →</span>
+          </div>
+        ))}
+      </div>
+    </section>
+    <Footer setCurrentPage={setCurrentPage} />
+  </div>
+);
+
+// ==================== UNTERSEITEN ====================
+
+const KurseOnlinePage = ({ setCurrentPage }) => (
+  <div style={{ background: colors.background, minHeight: '100vh' }}>
+    <PageHero title="Online-Kurse" description="Lerne Tai Chi zuhause – Kurzform, Langform und die 7 Vertiefungsstufen. In Deinem Tempo, für Deinen Atemtyp." />
     <section style={{ padding: '80px 60px', background: colors.background }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', maxWidth: '1100px', margin: '0 auto', alignItems: 'center' }}>
         <div style={{ background: colors.backgroundAlt, height: '350px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, fontStyle: 'italic' }}>[ Kurzform Video ]</div>
         <div>
           <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 600 }}>UNSER GESCHENK FÜR DICH</span>
           <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark, margin: '10px 0 20px' }}>Tai Chi Kurzform</h2>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.8, marginBottom: '20px' }}>Starte Deine Tai-Chi-Reise mit unserer Kurzform – eine kraftvolle Einführung in vier Grundbewegungen, wiederholt in acht Sequenzen.</p>
+          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.8, marginBottom: '20px' }}>Starte Deine Tai-Chi-Reise mit unserer Kurzform – eine kraftvolle Einführung in vier Grundbewegungen.</p>
           <ul style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 2, marginBottom: '25px', paddingLeft: '20px' }}>
             <li>10 präzise Videos, je ca. 13 Minuten</li>
             <li>Inkl. Dao-Übungen (Qigong)</li>
-            <li>Detailliertes Booklet</li>
             <li>Für beide Atemtypen</li>
           </ul>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -237,21 +325,18 @@ const KurseOnlinePage = ({ setCurrentPage }) => (
     </section>
     <section style={{ padding: '80px 60px', background: colors.white }}>
       <SectionTitle subtitle="Die klassische Form" title="Tai Chi Langform" />
-      <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, textAlign: 'center', maxWidth: '800px', margin: '-30px auto 50px', lineHeight: 1.8 }}>Ergründe Tai Chi in seiner ganzen Pracht – symbolisch unterteilt in Erde, Himmel und Mensch. Lerne insgesamt 81 Formen.</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
-        {[{ part: 'Teil I', symbol: 'Erde', forms: '13 Formen', desc: 'Der erste Teil entspricht dem Symbol der Erde – die „Verwurzelung". Mit einem verwurzelten Stand lösen sich körperliche Spannungen.', duration: '10-12 Wochen' }, { part: 'Teil II', symbol: 'Himmel', forms: '30 Formen', desc: 'Du erweiterst deinen Radius und entdeckst die diagonalen Richtungen. Du öffnest dich zum Himmel: die Bewegungen werden leichter.', duration: '20-24 Wochen' }, { part: 'Teil III', symbol: 'Mensch', forms: '38 Formen', desc: 'Der Mensch verbindet himmlische und irdische Anteile. Jetzt ist der Kopf gefordert, sich den vollständigen Ablauf einzuprägen.', duration: '12-14 Wochen' }].map((course, i) => (
+        {[{ part: 'Teil I', symbol: 'Erde', forms: '13 Formen', price: '€399' }, { part: 'Teil II', symbol: 'Himmel', forms: '30 Formen', price: '€399' }, { part: 'Teil III', symbol: 'Mensch', forms: '38 Formen', price: '€399' }].map((course, i) => (
           <div key={i} style={{ background: colors.background, border: `1px solid ${colors.border}`, overflow: 'hidden' }}>
-            <div style={{ background: colors.backgroundAlt, height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, fontStyle: 'italic' }}>[ {course.symbol} ]</div>
+            <div style={{ background: colors.backgroundAlt, height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, fontStyle: 'italic' }}>[ {course.symbol} ]</div>
             <div style={{ padding: '25px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
                 <span style={{ fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', color: colors.primary, fontWeight: 500 }}>{course.symbol.toUpperCase()}</span>
                 <span style={{ fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', color: colors.textMuted }}>{course.forms}</span>
               </div>
-              <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '10px' }}>Langform {course.part}</h3>
-              <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.85rem', lineHeight: 1.7, marginBottom: '15px' }}>{course.desc}</p>
-              <div style={{ fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', color: colors.textLight, marginBottom: '20px' }}>Lerndauer: ca. {course.duration}</div>
+              <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '15px' }}>Langform {course.part}</h3>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: '"Marcellus", serif', fontSize: '1.2rem', color: colors.dark }}>€399</span>
+                <span style={{ fontFamily: '"Marcellus", serif', fontSize: '1.2rem', color: colors.dark }}>{course.price}</span>
                 <button style={{ background: 'transparent', border: `1px solid ${colors.dark}`, color: colors.dark, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, padding: '10px 20px', cursor: 'pointer' }}>DETAILS →</button>
               </div>
             </div>
@@ -261,14 +346,12 @@ const KurseOnlinePage = ({ setCurrentPage }) => (
     </section>
     <section style={{ padding: '80px 60px', background: colors.background }}>
       <SectionTitle subtitle="Die 7 Tore zur inneren Kraft" title="Vertiefungsstufen" />
-      <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, textAlign: 'center', maxWidth: '800px', margin: '-30px auto 50px', lineHeight: 1.8 }}>Entdecke die Geheimnisse des inneren Tai Chi, wie sie Meister Frieder Anders in 26 Jahren von Meister K.H. Chu erlernt hat.</p>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '25px', maxWidth: '1000px', margin: '0 auto' }}>
-        {[{ tor: '1', title: 'Yin-Yang-Form', desc: 'Der Schlüssel zum Dreiklang von Himmel – Erde – Mensch' }, { tor: '2', title: 'Zentrumsbewegung', desc: 'Die Nabe des Rades – Deine Mitte zwischen Erde und Himmel' }, { tor: '3', title: 'Beinspirale', desc: 'Der Motor Deiner Fortbewegung – Verwurzelung und Leichtigkeit' }, { tor: '4', title: 'Armspirale', desc: 'Nacken und Schultern werden durchlässig für das Qi' }, { tor: '5', title: 'Halsspirale', desc: 'Die Pforte zum Himmel – Erfahre wu wei' }, { tor: '6', title: 'Wahrer Atem', desc: 'Die Vollendung – Kontrolle über die innere Kraft' }, { tor: '7', title: 'Yin Yang in den Füßen', desc: 'Die Verfeinerung – Konkrete Verwurzelung bis ins Detail' }].map((stufe, i) => (
-          <div key={i} style={{ background: colors.white, border: `1px solid ${colors.border}`, padding: '25px', display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
+        {[{ tor: '1', title: 'Yin-Yang-Form' }, { tor: '2', title: 'Zentrumsbewegung' }, { tor: '3', title: 'Beinspirale' }, { tor: '4', title: 'Armspirale' }, { tor: '5', title: 'Halsspirale' }, { tor: '6', title: 'Wahrer Atem' }, { tor: '7', title: 'Yin Yang in den Füßen' }].map((stufe, i) => (
+          <div key={i} style={{ background: colors.white, border: `1px solid ${colors.border}`, padding: '25px', display: 'flex', gap: '20px', alignItems: 'center' }}>
             <div style={{ width: '50px', height: '50px', background: colors.primary, color: colors.white, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: '"Marcellus", serif', fontSize: '1.3rem', flexShrink: 0 }}>{stufe.tor}</div>
             <div style={{ flex: 1 }}>
               <h4 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.1rem', marginBottom: '5px' }}>{stufe.title}</h4>
-              <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '10px' }}>{stufe.desc}</p>
               <span style={{ fontFamily: '"Sora", sans-serif', color: colors.primary, fontSize: '0.85rem', fontWeight: 500 }}>€399</span>
             </div>
           </div>
@@ -276,23 +359,12 @@ const KurseOnlinePage = ({ setCurrentPage }) => (
       </div>
       <div style={{ maxWidth: '1000px', margin: '40px auto 0', background: colors.white, border: `2px solid ${colors.primary}`, padding: '40px', textAlign: 'center' }}>
         <span style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 600 }}>EMPFOHLEN</span>
-        <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.8rem', margin: '10px 0' }}>Das Meisterpaket „Siegen ohne zu kämpfen"</h3>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '25px' }}>Alle 7 Tore auf einmal öffnen – Spare Zeit und Geld</p>
+        <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.8rem', margin: '10px 0' }}>Das Meisterpaket</h3>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '25px' }}>Alle 7 Tore auf einmal öffnen – Spare über €500</p>
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px' }}>
           <span style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark }}>€2.299</span>
           <CTAButton>MEISTERPAKET KAUFEN</CTAButton>
         </div>
-      </div>
-    </section>
-    <section style={{ padding: '80px 60px', background: colors.white }}>
-      <SectionTitle subtitle="Das sagen unsere Schüler" title="Testimonials" />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
-        {[{ name: 'Toni', text: 'Ich finde die Lernvideos eine Super-Übungshilfe. Auch ich selbst profitiere nach über 10 Jahren Übungspraxis davon.' }, { name: 'Klaus', text: 'Nach vielen Jahren Tai Chi entdecke ich in den Lernvideos immer wieder neue Einzelheiten, vor allem in den Übergängen.' }, { name: 'Elisabeth', text: 'Ich finde toll, wie die Unterschiede der Atemtypen dargestellt werden – eine große Hilfe für alle, die lernen!' }].map((t, i) => (
-          <div key={i} style={{ background: colors.background, padding: '30px', borderLeft: `3px solid ${colors.primary}` }}>
-            <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.8, fontStyle: 'italic', marginBottom: '20px' }}>„{t.text}"</p>
-            <p style={{ fontFamily: '"Marcellus", serif', color: colors.dark }}>— {t.name}</p>
-          </div>
-        ))}
       </div>
     </section>
     <Footer setCurrentPage={setCurrentPage} />
@@ -302,12 +374,10 @@ const KurseOnlinePage = ({ setCurrentPage }) => (
 const KurseLivePage = ({ setCurrentPage }) => {
   const [activeFilter, setActiveFilter] = useState('alle');
   const courses = [
-    { id: 1, type: 'unterricht', title: 'ZOOM-Gruppenunterricht', price: '€30/Std', desc: 'Wöchentlicher Unterricht in der Gruppe mit direktem Feedback', tag: 'Laufend', day: 'Dienstags 19:00' },
-    { id: 2, type: 'unterricht', title: 'ZOOM-Einzelunterricht', price: 'Auf Anfrage', desc: 'Persönliche Betreuung und individuelle Korrekturen durch den Meister', tag: 'Individuell', day: 'Nach Vereinbarung' },
-    { id: 3, type: 'meetings', title: 'Offenes Üben', price: 'Kostenlos', desc: 'Gemeinsames Üben der Form für alle Kursmitglieder', tag: 'Community', day: 'Samstags 10:00' },
-    { id: 4, type: 'meetings', title: 'Q&A mit dem Meister', price: 'Kostenlos', desc: 'Fragen und Antworten zu Theorie und Praxis', tag: 'Monatlich', day: 'Letzter Sonntag im Monat' },
-    { id: 5, type: 'webinare', title: 'Einführung in Atemtyp Tai Chi', price: '€49', desc: 'Live-Webinar mit Meister Anders – Die Grundlagen verstehen', tag: 'Februar 2026', day: '15. Februar, 14:00' },
-    { id: 6, type: 'webinare', title: 'Die 7 Tore zur inneren Kraft', price: '€49', desc: 'Überblick über die Vertiefungsstufen', tag: 'März 2026', day: '8. März, 14:00' },
+    { id: 1, type: 'unterricht', title: 'ZOOM-Gruppenunterricht', price: '€30/Std', desc: 'Wöchentlicher Unterricht in der Gruppe', tag: 'Laufend', day: 'Dienstags 19:00' },
+    { id: 2, type: 'unterricht', title: 'ZOOM-Einzelunterricht', price: 'Auf Anfrage', desc: 'Persönliche Betreuung durch den Meister', tag: 'Individuell', day: 'Nach Vereinbarung' },
+    { id: 3, type: 'meetings', title: 'Offenes Üben', price: 'Kostenlos', desc: 'Gemeinsames Üben der Form', tag: 'Community', day: 'Samstags 10:00' },
+    { id: 4, type: 'webinare', title: 'Einführung in Atemtyp Tai Chi', price: '€49', desc: 'Live-Webinar mit Meister Anders', tag: 'Februar 2026', day: '15. Februar, 14:00' },
   ];
   const filteredCourses = activeFilter === 'alle' ? courses : courses.filter(c => c.type === activeFilter);
   return (
@@ -315,11 +385,11 @@ const KurseLivePage = ({ setCurrentPage }) => {
       <PageHero title="Live & Zoom" description="Lerne und übe gemeinsam – in Echtzeit mit Meister Anders und unserer Community." />
       <section style={{ padding: '40px 60px 60px' }}>
         <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '50px' }}>
-          {[{ id: 'alle', label: 'ALLE' }, { id: 'unterricht', label: '👨‍🏫 ZOOM-UNTERRICHT' }, { id: 'meetings', label: '🤝 ZOOM-MEETINGS' }, { id: 'webinare', label: '🎓 WEBINARE' }].map(f => (
+          {[{ id: 'alle', label: 'ALLE' }, { id: 'unterricht', label: '👨‍🏫 UNTERRICHT' }, { id: 'meetings', label: '🤝 MEETINGS' }, { id: 'webinare', label: '🎓 WEBINARE' }].map(f => (
             <button key={f.id} onClick={() => setActiveFilter(f.id)} style={{ background: activeFilter === f.id ? colors.primary : colors.white, border: `1px solid ${activeFilter === f.id ? colors.primary : colors.border}`, color: activeFilter === f.id ? colors.white : colors.text, padding: '12px 24px', fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, cursor: 'pointer' }}>{f.label}</button>
           ))}
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '30px', maxWidth: '900px', margin: '0 auto' }}>
           {filteredCourses.map(course => (
             <div key={course.id} style={{ background: colors.white, padding: '30px', border: `1px solid ${colors.border}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
@@ -342,17 +412,15 @@ const KurseLivePage = ({ setCurrentPage }) => {
 const KursePraesenzPage = ({ setCurrentPage }) => {
   const courses = [
     { id: 1, title: 'Wochenend-Einführung', price: '€199', desc: 'Dein erster Schritt in die Welt des Tai Chi', date: 'März 2026, Frankfurt', duration: '2 Tage' },
-    { id: 2, title: 'Bildungsurlaub', price: '€599', desc: '5 Tage intensive Praxis – anerkannt in vielen Bundesländern', date: 'Dezember 2025', duration: '5 Tage' },
-    { id: 3, title: 'Intensivseminar Langform', price: '€399', desc: 'Vertiefe die komplette Langform unter Anleitung', date: 'April 2026, Wien', duration: '3 Tage' },
-    { id: 4, title: 'Retreat Toskana', price: '€1.299', desc: 'Tai Chi und Regeneration in der Natur Italiens', date: 'September 2026', duration: '7 Tage' },
-    { id: 5, title: 'Kursleiter-Ausbildung', price: '€1.999', desc: 'Lerne, die Kurzform zu unterrichten', date: '2026, mehrteilig', duration: '10 Tage' },
-    { id: 6, title: 'Lehrer-Ausbildung', price: '€4.999', desc: 'Umfassende Ausbildung zum zertifizierten Lehrer', date: 'Auf Anfrage', duration: '2 Jahre' },
+    { id: 2, title: 'Bildungsurlaub', price: '€599', desc: '5 Tage intensive Praxis', date: 'Dezember 2025', duration: '5 Tage' },
+    { id: 3, title: 'Retreat Toskana', price: '€1.299', desc: 'Tai Chi und Regeneration in der Natur', date: 'September 2026', duration: '7 Tage' },
+    { id: 4, title: 'Lehrer-Ausbildung', price: '€4.999', desc: 'Umfassende Ausbildung zum Lehrer', date: 'Auf Anfrage', duration: '2 Jahre' },
   ];
   return (
     <div style={{ background: colors.background, minHeight: '100vh' }}>
-      <PageHero title="Präsenzkurse" description="Erlebe Tai Chi vor Ort – Intensivseminare, Retreats und Ausbildungen mit Meister Anders." />
+      <PageHero title="Präsenzkurse" description="Erlebe Tai Chi vor Ort – Intensivseminare, Retreats und Ausbildungen." />
       <section style={{ padding: '40px 60px 80px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '30px', maxWidth: '900px', margin: '0 auto' }}>
           {courses.map(course => (
             <div key={course.id} style={{ background: colors.white, padding: '30px', border: `1px solid ${colors.border}` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
@@ -377,40 +445,25 @@ const MethodeInnereKraftPage = ({ setCurrentPage }) => (
     <PageHero subtitle="DIE METHODE" title="Innere Kraft" description="Was innere Kraft bedeutet – im Alltag und in der Kampfkunst Tai Chi." />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '1.1rem', lineHeight: 2, marginBottom: '30px' }}>„Innere Kraft" ist ein Begriff, der viele Facetten hat. Er beschreibt unsere Fähigkeit, mit Herausforderungen umzugehen, authentisch zu sein und aus uns selbst heraus Energie zu schöpfen.</p>
-        <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.5rem', marginBottom: '25px' }}>Was innere Kraft beinhaltet</h3>
-        <div style={{ display: 'grid', gap: '20px', marginBottom: '40px' }}>
-          {[{ title: 'Emotionale Stabilität', desc: 'Die Fähigkeit, mit Stress, Angst oder Trauer umzugehen, ohne sich davon überwältigen zu lassen.' }, { title: 'Selbstvertrauen', desc: 'Der Glaube an die eigene Fähigkeit, Probleme zu lösen und Ziele zu erreichen.' }, { title: 'Resilienz', desc: 'Die Kraft, nach Rückschlägen wieder aufzustehen und weiterzumachen.' }, { title: 'Authentizität', desc: 'Treu zu sich selbst zu stehen, auch wenn äußere Erwartungen Druck ausüben.' }, { title: 'Willenskraft', desc: 'Die Fähigkeit, sich selbst zu motivieren und durchzuhalten – auch wenn es schwer wird.' }].map((item, i) => (
+        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '1.1rem', lineHeight: 2, marginBottom: '30px' }}>„Innere Kraft" beschreibt unsere Fähigkeit, mit Herausforderungen umzugehen, authentisch zu sein und aus uns selbst heraus Energie zu schöpfen.</p>
+        <div style={{ display: 'grid', gap: '20px' }}>
+          {[{ title: 'Emotionale Stabilität', desc: 'Mit Stress umgehen, ohne überwältigt zu werden.' }, { title: 'Resilienz', desc: 'Nach Rückschlägen wieder aufstehen.' }, { title: 'Authentizität', desc: 'Treu zu sich selbst stehen.' }].map((item, i) => (
             <div key={i} style={{ background: colors.background, padding: '20px 25px', borderLeft: `3px solid ${colors.primary}` }}>
               <h4 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.1rem', marginBottom: '5px' }}>{item.title}</h4>
-              <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem', lineHeight: 1.7 }}>{item.desc}</p>
+              <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem' }}>{item.desc}</p>
             </div>
           ))}
         </div>
       </div>
     </section>
-    <section style={{ padding: '80px 60px', background: colors.background }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', maxWidth: '1100px', margin: '0 auto', alignItems: 'center' }}>
-        <div>
-          <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark, marginBottom: '25px' }}>Innere Kraft in der Kampfkunst</h2>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>Im Tai Chi als Kampfkunst bezeichnet innere Kraft eine reale Kraft, die es ermöglicht, einen Angreifer auf Distanz zu halten und ihn zu entwurzeln, ohne ihn zu verletzen.</p>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9 }}>Nicht Muskelkraft wird trainiert, sondern Entspannung und „Sinken" ermöglichen es, das Kräftespiel der Faszienlinien des Körpers zu entwickeln.</p>
-        </div>
-        <div style={{ background: colors.backgroundAlt, height: '400px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: colors.textMuted }}>
-          <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: colors.primary, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '15px' }}><span style={{ fontSize: '2rem', color: colors.white }}>▶</span></div>
-          <span style={{ fontStyle: 'italic' }}>Demonstration der inneren Kraft</span>
-        </div>
-      </div>
-    </section>
     <section style={{ padding: '60px', background: colors.dark, textAlign: 'center' }}>
-      <blockquote style={{ fontFamily: '"Marcellus", serif', fontSize: '1.4rem', color: colors.white, fontStyle: 'italic', maxWidth: '700px', margin: '0 auto', lineHeight: 1.8 }}>„Viele üben heute Taiji, aber es ist nicht das wahre Taiji. Wahres Taiji ist wirklich wunderbar."</blockquote>
+      <blockquote style={{ fontFamily: '"Marcellus", serif', fontSize: '1.4rem', color: colors.white, fontStyle: 'italic', maxWidth: '700px', margin: '0 auto', lineHeight: 1.8 }}>„Wahres Taiji ist wirklich wunderbar."</blockquote>
       <p style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.6)', marginTop: '20px', fontSize: '0.85rem' }}>— Chen Weiming, 1928</p>
     </section>
     <section style={{ padding: '80px 60px', background: colors.background, textAlign: 'center' }}>
-      <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark, marginBottom: '20px' }}>Bereit, Deine innere Kraft zu entdecken?</h2>
       <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
         <CTAButton onClick={() => setCurrentPage('methode-atemtyp')}>ATEMTYP VERSTEHEN</CTAButton>
-        <CTAButton variant="secondary" onClick={() => setCurrentPage('kurse-online')}>KURSE ENTDECKEN</CTAButton>
+        <CTAButton variant="secondary" onClick={() => setCurrentPage('kurse')}>KURSE ENTDECKEN</CTAButton>
       </div>
     </section>
     <Footer setCurrentPage={setCurrentPage} />
@@ -422,9 +475,7 @@ const MethodeAtemtypPage = ({ setCurrentPage }) => (
     <PageHero subtitle="DIE METHODE" title="Atemtyp Tai Chi" description="Warum nur Tai Chi im eigenen Atemtyp zur inneren Kraft führt." />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.5rem', marginBottom: '20px' }}>Was ist AtemtypTaiChi?</h3>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>„AtemtypTaiChi" ist speziell insofern, als es vorab bestimmt, welcher Atemtyp jemand ist – erst dann macht es Sinn, bestimmte Atemmethoden einzusetzen.</p>
-        <div style={{ background: colors.primaryLight, padding: '25px', borderLeft: `3px solid ${colors.primary}`, marginTop: '30px' }}>
+        <div style={{ background: colors.primaryLight, padding: '25px', borderLeft: `3px solid ${colors.primary}` }}>
           <p style={{ fontFamily: '"Sora", sans-serif', color: colors.dark, lineHeight: 1.9, fontWeight: 500, margin: 0 }}>Erst Tai Chi im eigenen Atemtyp entwickelt den „richtigen" Atem und eröffnet den Zugang zur inneren Kraft.</p>
         </div>
       </div>
@@ -433,24 +484,20 @@ const MethodeAtemtypPage = ({ setCurrentPage }) => (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', maxWidth: '1100px', margin: '0 auto', alignItems: 'center' }}>
         <div style={{ background: colors.white, padding: '50px', textAlign: 'center', border: `1px solid ${colors.border}` }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '60px' }}>
-            <div><div style={{ fontSize: '4rem', marginBottom: '10px' }}>☽</div><div style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem' }}>Einatmer</div><div style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', marginTop: '5px' }}>lunar</div><p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.8rem', marginTop: '15px', lineHeight: 1.6 }}>Braucht die Fülle.<br />Steigt nach oben.<br />Aufrechte Haltung.</p></div>
-            <div><div style={{ fontSize: '4rem', marginBottom: '10px' }}>☀</div><div style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem' }}>Ausatmer</div><div style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', marginTop: '5px' }}>solar</div><p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.8rem', marginTop: '15px', lineHeight: 1.6 }}>Braucht die Leere.<br />Sinkt zur Erde.<br />Leicht geneigte Haltung.</p></div>
+            <div><div style={{ fontSize: '4rem', marginBottom: '10px' }}>☽</div><div style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem' }}>Einatmer</div><div style={{ color: colors.primary, fontSize: '0.85rem', marginTop: '5px' }}>lunar</div></div>
+            <div><div style={{ fontSize: '4rem', marginBottom: '10px' }}>☀</div><div style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem' }}>Ausatmer</div><div style={{ color: colors.primary, fontSize: '0.85rem', marginTop: '5px' }}>solar</div></div>
           </div>
         </div>
         <div>
           <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark, marginBottom: '25px' }}>Wie Sonne und Mond</h2>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>So wie Sonne und Mond unseren Planeten beeinflussen, haben sie auch eine Wirkung auf unseren menschlichen Organismus. Je nachdem, ob Sonne oder Mond zum Zeitpunkt unserer Geburt einen stärkeren Einfluss auf uns ausüben, sind wir zeitlebens <strong style={{ color: colors.dark }}>Einatmer-Typ</strong> (lunarer Atemtyp) oder <strong style={{ color: colors.dark }}>Ausatmer-Typ</strong> (solarer Atemtyp).</p>
+          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9 }}>Je nachdem, ob Sonne oder Mond zum Zeitpunkt Deiner Geburt stärker war, bist Du zeitlebens <strong style={{ color: colors.dark }}>Einatmer</strong> oder <strong style={{ color: colors.dark }}>Ausatmer</strong>.</p>
         </div>
       </div>
-    </section>
-    <section style={{ padding: '60px', background: colors.dark, textAlign: 'center' }}>
-      <blockquote style={{ fontFamily: '"Marcellus", serif', fontSize: '1.3rem', color: colors.white, fontStyle: 'italic', maxWidth: '700px', margin: '0 auto', lineHeight: 1.8 }}>„Nichts unter dem Himmel ist so weich und schwach wie das Wasser, und doch ist es von keinem, das gegen Festes und Starkes anstürmt, zu schlagen."</blockquote>
-      <p style={{ fontFamily: '"Sora", sans-serif', color: 'rgba(255,255,255,0.6)', marginTop: '20px', fontSize: '0.85rem' }}>— Laozi</p>
     </section>
     <section style={{ padding: '80px 60px', background: colors.white, textAlign: 'center' }}>
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: '50px', border: `2px solid ${colors.primary}` }}>
         <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2rem', color: colors.dark, marginBottom: '20px' }}>🔍 Welcher Atemtyp bist Du?</h2>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '30px', lineHeight: 1.8 }}>Finde es heraus und erhalte Deinen persönlichen Übungsplan – abgestimmt auf Deinen individuellen Atemtyp.</p>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '30px' }}>Finde es heraus mit unserem Test.</p>
         <CTAButton onClick={() => setCurrentPage('methode-test')}>ATEMTYP-TEST STARTEN</CTAButton>
       </div>
     </section>
@@ -460,12 +507,12 @@ const MethodeAtemtypPage = ({ setCurrentPage }) => (
 
 const MethodeTestPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
-    <PageHero subtitle="FINDE DEINEN ATEMTYP" title="Der Atemtyp-Test" description="Bist Du Einatmer (lunar) oder Ausatmer (solar)? Finde es in wenigen Minuten heraus." />
+    <PageHero subtitle="FINDE DEINEN ATEMTYP" title="Der Atemtyp-Test" description="Bist Du Einatmer (lunar) oder Ausatmer (solar)?" />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ maxWidth: '700px', margin: '0 auto', padding: '60px', background: colors.background, border: `1px solid ${colors.border}`, textAlign: 'center' }}>
         <div style={{ fontSize: '4rem', marginBottom: '20px' }}>🔍</div>
         <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '1.8rem', color: colors.dark, marginBottom: '20px' }}>Interaktiver Atemtyp-Test</h2>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '30px', lineHeight: 1.8 }}>Beantworte einige Fragen zu Deiner Körperhaltung, Deinem Atem und Deinen Gewohnheiten.</p>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, marginBottom: '30px' }}>Beantworte einige Fragen zu Deiner Körperhaltung und Deinem Atem.</p>
         <CTAButton>TEST STARTEN</CTAButton>
         <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textLight, fontSize: '0.8rem', marginTop: '20px' }}>Dauer: ca. 3-5 Minuten</p>
       </div>
@@ -478,28 +525,21 @@ const UeberMeisterPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
     <PageHero subtitle="ÜBER UNS" title="Der Meister" />
     <section style={{ padding: '60px', background: colors.white }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '400px 1fr', gap: '60px', maxWidth: '1100px', margin: '0 auto', alignItems: 'start' }}>
-        <div style={{ background: colors.backgroundAlt, height: '500px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, fontStyle: 'italic' }}>[ Foto Meister Frieder Anders ]</div>
+      <div style={{ display: 'grid', gridTemplateColumns: '350px 1fr', gap: '60px', maxWidth: '1100px', margin: '0 auto', alignItems: 'start' }}>
+        <div style={{ background: colors.backgroundAlt, height: '450px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted, fontStyle: 'italic' }}>[ Foto Meister Frieder Anders ]</div>
         <div>
           <h2 style={{ fontFamily: '"Marcellus", serif', fontSize: '2.5rem', color: colors.dark, marginBottom: '10px' }}>Meister Frieder Anders</h2>
           <p style={{ color: colors.primary, fontFamily: '"Sora", sans-serif', fontSize: '1rem', marginBottom: '25px', fontStyle: 'italic' }}>Großmeister der 6. Generation der Yang-Familientradition</p>
-          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>Frieder Anders ist der erste Europäer, der als Meister der Yang-Familientradition anerkannt wurde (2002). Er lernte 26 Jahre bei Meister K.H. Chu in London.</p>
+          <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>Der erste Europäer, der als Meister der Yang-Familientradition anerkannt wurde (2002). 26 Jahre Ausbildung bei Meister K.H. Chu in London.</p>
           <div style={{ background: colors.background, padding: '25px', border: `1px solid ${colors.border}` }}>
             <h4 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, marginBottom: '15px' }}>Meilensteine</h4>
             <ul style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 2, paddingLeft: '20px', fontSize: '0.9rem' }}>
               <li>Seit 1973: Über 50 Jahre Tai-Chi-Praxis</li>
-              <li>26 Jahre Ausbildung bei Meister K.H. Chu</li>
               <li>2002: Anerkennung als Meister</li>
               <li>2005: Entwicklung des Atemtyp Tai Chi</li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
-    <section style={{ padding: '60px', background: colors.background }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-        <blockquote style={{ fontFamily: '"Marcellus", serif', fontSize: '1.5rem', color: colors.dark, fontStyle: 'italic', lineHeight: 1.8, marginBottom: '20px' }}>„Folge nicht den Fußstapfen der Meister.<br />Suche, was sie gesucht haben."</blockquote>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, fontSize: '0.9rem' }}>— Bashō (1644-1694)</p>
       </div>
     </section>
     <Footer setCurrentPage={setCurrentPage} />
@@ -508,15 +548,11 @@ const UeberMeisterPage = ({ setCurrentPage }) => (
 
 const UeberTraditionPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
-    <PageHero subtitle="ÜBER UNS" title="Tradition & Moderne" description="Unsere Arbeit verbindet Tradition und Moderne – authentisches Tai Chi für die westliche Welt." />
+    <PageHero subtitle="ÜBER UNS" title="Tradition & Moderne" description="Unsere Philosophie zwischen Ost und West." />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.8rem', marginBottom: '25px' }}>Tradition</h3>
-        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>Authentisches Tai Chi in der Yang-Familientradition, von Meister Frieder Anders in 26 Jahren bei Meister K.H. Chu erlernt.</p>
-      </div>
-    </section>
-    <section style={{ padding: '60px', background: colors.background }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '40px' }}>Authentisches Tai Chi in der Yang-Familientradition, von Meister Frieder Anders in 26 Jahren bei Meister K.H. Chu erlernt.</p>
         <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.8rem', marginBottom: '25px' }}>Moderne</h3>
         <p style={{ fontFamily: '"Sora", sans-serif', color: colors.textMuted, lineHeight: 1.9, marginBottom: '20px' }}>Wir tragen der abendländischen Kultur, in der die Individuation eine bedeutende Rolle spielt, Rechnung.</p>
         <blockquote style={{ borderLeft: `3px solid ${colors.primary}`, paddingLeft: '25px', margin: '30px 0', fontFamily: '"Marcellus", serif', fontSize: '1.2rem', color: colors.dark, fontStyle: 'italic' }}>„Wir machen keine Jünger. Wir helfen Dir, Dein eigenes Instrument zu spielen."</blockquote>
@@ -528,22 +564,19 @@ const UeberTraditionPage = ({ setCurrentPage }) => (
 
 const UeberLehrerPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
-    <PageHero subtitle="ÜBER UNS" title="Zertifizierte Lehrer" description="Finde einen Lehrer der Tai Chi Academy in Deiner Nähe." />
+    <PageHero subtitle="ÜBER UNS" title="Zertifizierte Lehrer" description="Finde einen Lehrer in Deiner Nähe." />
     <section style={{ padding: '60px', background: colors.white }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px' }}>
-          {[{ name: 'Toni Müller', region: 'Wien', atemtyp: 'Einatmer' }, { name: 'Dardo Schmidt', region: 'Wien', atemtyp: 'Ausatmer' }, { name: 'Barbara Hoffmann', region: 'Frankfurt', atemtyp: 'Einatmer' }].map((lehrer, i) => (
-            <div key={i} style={{ background: colors.background, border: `1px solid ${colors.border}`, overflow: 'hidden' }}>
-              <div style={{ background: colors.backgroundAlt, height: '200px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted }}>[ Foto ]</div>
-              <div style={{ padding: '25px' }}>
-                <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '5px' }}>{lehrer.name}</h3>
-                <p style={{ fontFamily: '"Sora", sans-serif', color: colors.primary, fontSize: '0.85rem', marginBottom: '15px' }}>📍 {lehrer.region}</p>
-                <div style={{ fontFamily: '"Sora", sans-serif', fontSize: '0.85rem', color: colors.textMuted, marginBottom: '20px' }}><strong>Atemtyp:</strong> {lehrer.atemtyp}</div>
-                <button style={{ width: '100%', padding: '12px', background: 'transparent', border: `1px solid ${colors.dark}`, color: colors.dark, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, cursor: 'pointer' }}>KONTAKT →</button>
-              </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
+        {[{ name: 'Toni Müller', region: 'Wien' }, { name: 'Dardo Schmidt', region: 'Wien' }, { name: 'Barbara Hoffmann', region: 'Frankfurt' }].map((lehrer, i) => (
+          <div key={i} style={{ background: colors.background, border: `1px solid ${colors.border}`, overflow: 'hidden' }}>
+            <div style={{ background: colors.backgroundAlt, height: '180px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted }}>[ Foto ]</div>
+            <div style={{ padding: '25px' }}>
+              <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.3rem', marginBottom: '5px' }}>{lehrer.name}</h3>
+              <p style={{ fontFamily: '"Sora", sans-serif', color: colors.primary, fontSize: '0.85rem', marginBottom: '20px' }}>📍 {lehrer.region}</p>
+              <button style={{ width: '100%', padding: '12px', background: 'transparent', border: `1px solid ${colors.dark}`, color: colors.dark, fontFamily: '"Sora", sans-serif', fontSize: '0.8rem', fontWeight: 500, cursor: 'pointer' }}>KONTAKT →</button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
     <Footer setCurrentPage={setCurrentPage} />
@@ -555,9 +588,9 @@ const WissenBuecherPage = ({ setCurrentPage }) => (
     <PageHero subtitle="WISSEN" title="Bücher" description="Publikationen von Meister Frieder Anders" />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-        {[{ title: 'Die sieben Tore zur inneren Kraft', year: '2025', desc: 'Das neue Hauptwerk über die energetischen Unterschiede der Atemtypen.' }, { title: 'Atemtyp Tai Chi', year: '2023', desc: 'Das Lehrbuch zur Methode mit Anleitungen für beide Atemtypen.' }].map((book, i) => (
-          <div key={i} style={{ display: 'grid', gridTemplateColumns: '200px 1fr', gap: '40px', marginBottom: '40px', padding: '30px', background: colors.background, border: `1px solid ${colors.border}` }}>
-            <div style={{ background: colors.backgroundAlt, height: '280px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted }}>[ Cover ]</div>
+        {[{ title: 'Die sieben Tore zur inneren Kraft', year: '2025', desc: 'Das neue Hauptwerk über die Atemtypen.' }, { title: 'Atemtyp Tai Chi', year: '2023', desc: 'Das Lehrbuch zur Methode.' }].map((book, i) => (
+          <div key={i} style={{ display: 'grid', gridTemplateColumns: '180px 1fr', gap: '40px', marginBottom: '40px', padding: '30px', background: colors.background, border: `1px solid ${colors.border}` }}>
+            <div style={{ background: colors.backgroundAlt, height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.textMuted }}>[ Cover ]</div>
             <div>
               <span style={{ fontFamily: '"Sora", sans-serif', color: colors.primary, fontSize: '0.85rem', fontWeight: 500 }}>{book.year}</span>
               <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.5rem', margin: '10px 0 15px' }}>{book.title}</h3>
@@ -574,13 +607,13 @@ const WissenBuecherPage = ({ setCurrentPage }) => (
 
 const WissenBlogPage = ({ setCurrentPage }) => (
   <div style={{ background: colors.background, minHeight: '100vh' }}>
-    <PageHero subtitle="WISSEN" title="Blog" description="Artikel rund um Tai Chi, Atemtypen und innere Kraft" />
+    <PageHero subtitle="WISSEN" title="Blog" description="Artikel rund um Tai Chi und innere Kraft" />
     <section style={{ padding: '60px', background: colors.white }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '30px', maxWidth: '1100px', margin: '0 auto' }}>
-        {[{ date: '04. Dez 2025', title: 'Ein Riss geht durch die Tai-Chi-Welt' }, { date: '17. Nov 2025', title: '20 Jahre Entwicklung von AtemtypTaichi' }, { date: '13. Okt 2025', title: 'Taichianders' }, { date: '28. Sep 2025', title: 'Wu Wei – Das Nichtun im Tun' }, { date: '15. Aug 2025', title: 'Die Faszien und innere Kraft' }, { date: '02. Jul 2025', title: 'Körperhaben und Körpersein' }].map((post, i) => (
+        {[{ date: '04. Dez 2025', title: 'Ein Riss geht durch die Tai-Chi-Welt' }, { date: '17. Nov 2025', title: '20 Jahre AtemtypTaiChi' }, { date: '13. Okt 2025', title: 'Taichianders' }, { date: '28. Sep 2025', title: 'Wu Wei – Das Nichtun im Tun' }, { date: '15. Aug 2025', title: 'Die Faszien und innere Kraft' }, { date: '02. Jul 2025', title: 'Körperhaben und Körpersein' }].map((post, i) => (
           <div key={i} style={{ background: colors.background, border: `1px solid ${colors.border}`, padding: '25px', cursor: 'pointer' }}>
             <span style={{ fontFamily: '"Sora", sans-serif', color: colors.primary, fontSize: '0.8rem', fontWeight: 500 }}>{post.date}</span>
-            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.1rem', margin: '10px 0 15px', lineHeight: 1.4 }}>{post.title}</h3>
+            <h3 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1.1rem', margin: '10px 0', lineHeight: 1.4 }}>{post.title}</h3>
           </div>
         ))}
       </div>
@@ -598,7 +631,7 @@ const WissenFilmarchivPage = ({ setCurrentPage }) => (
           <div key={i} style={{ background: colors.background, border: `1px solid ${colors.border}`, cursor: 'pointer' }}>
             <div style={{ height: '180px', background: colors.backgroundAlt, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
               <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: colors.primary, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><span style={{ fontSize: '1.5rem', color: colors.white }}>▶</span></div>
-              <span style={{ position: 'absolute', bottom: '10px', right: '10px', background: colors.dark, color: colors.white, padding: '4px 8px', fontSize: '0.75rem', fontFamily: '"Sora", sans-serif' }}>{video.duration}</span>
+              <span style={{ position: 'absolute', bottom: '10px', right: '10px', background: colors.dark, color: colors.white, padding: '4px 8px', fontSize: '0.75rem' }}>{video.duration}</span>
             </div>
             <div style={{ padding: '20px' }}><h4 style={{ fontFamily: '"Marcellus", serif', color: colors.dark, fontSize: '1rem' }}>{video.title}</h4></div>
           </div>
@@ -609,21 +642,32 @@ const WissenFilmarchivPage = ({ setCurrentPage }) => (
   </div>
 );
 
+// ==================== MAIN APP ====================
+
 function TaiChiAcademyPrototype() {
   const [currentPage, setCurrentPage] = useState('home');
   const renderPage = () => {
     switch (currentPage) {
       case 'home': return <HomePage setCurrentPage={setCurrentPage} />;
-      case 'kurse': case 'kurse-online': return <KurseOnlinePage setCurrentPage={setCurrentPage} />;
+      // Übersichtsseiten
+      case 'kurse': return <KurseOverviewPage setCurrentPage={setCurrentPage} />;
+      case 'methode': return <MethodeOverviewPage setCurrentPage={setCurrentPage} />;
+      case 'ueber-uns': return <UeberUnsOverviewPage setCurrentPage={setCurrentPage} />;
+      case 'wissen': return <WissenOverviewPage setCurrentPage={setCurrentPage} />;
+      // Kurse Unterseiten
+      case 'kurse-online': return <KurseOnlinePage setCurrentPage={setCurrentPage} />;
       case 'kurse-live': return <KurseLivePage setCurrentPage={setCurrentPage} />;
       case 'kurse-praesenz': return <KursePraesenzPage setCurrentPage={setCurrentPage} />;
-      case 'methode': case 'methode-innere-kraft': return <MethodeInnereKraftPage setCurrentPage={setCurrentPage} />;
+      // Methode Unterseiten
+      case 'methode-innere-kraft': return <MethodeInnereKraftPage setCurrentPage={setCurrentPage} />;
       case 'methode-atemtyp': return <MethodeAtemtypPage setCurrentPage={setCurrentPage} />;
       case 'methode-test': return <MethodeTestPage setCurrentPage={setCurrentPage} />;
-      case 'ueber-uns': case 'ueber-meister': return <UeberMeisterPage setCurrentPage={setCurrentPage} />;
+      // Über Uns Unterseiten
+      case 'ueber-meister': return <UeberMeisterPage setCurrentPage={setCurrentPage} />;
       case 'ueber-tradition': return <UeberTraditionPage setCurrentPage={setCurrentPage} />;
       case 'ueber-lehrer': return <UeberLehrerPage setCurrentPage={setCurrentPage} />;
-      case 'wissen': case 'wissen-buecher': return <WissenBuecherPage setCurrentPage={setCurrentPage} />;
+      // Wissen Unterseiten
+      case 'wissen-buecher': return <WissenBuecherPage setCurrentPage={setCurrentPage} />;
       case 'wissen-blog': return <WissenBlogPage setCurrentPage={setCurrentPage} />;
       case 'wissen-filmarchiv': return <WissenFilmarchivPage setCurrentPage={setCurrentPage} />;
       default: return <HomePage setCurrentPage={setCurrentPage} />;
