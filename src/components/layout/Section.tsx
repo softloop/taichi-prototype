@@ -4,9 +4,10 @@ interface SectionProps {
   children: ReactNode
   bg?: 'white' | 'base' | 'dark' | 'primary-light'
   className?: string
+  id?: string
 }
 
-export default function Section({ children, bg = 'white', className = '' }: SectionProps) {
+export default function Section({ children, bg = 'white', className = '', id }: SectionProps) {
   const bgClasses = {
     white: 'bg-white',
     base: 'bg-background',
@@ -15,7 +16,7 @@ export default function Section({ children, bg = 'white', className = '' }: Sect
   }
 
   return (
-    <section className={`${bgClasses[bg]} ${className}`}>
+    <section id={id} className={`${bgClasses[bg]} ${className}`}>
       {children}
     </section>
   )

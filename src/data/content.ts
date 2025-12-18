@@ -1,10 +1,114 @@
 export const homepage = {
   hero: {
-    subtitle: 'DEUTSCHLANDS ÄLTESTE TAI-CHI-SCHULE',
-    title: 'Entdecke Deine',
-    titleHighlight: 'Innere Kraft',
+    subtitle: 'Deutschlands älteste Tai-Chi-Schule',
+    title: 'Entdecke Deine Innere Kraft',
     desc: 'Lerne authentisches Yang-Stil Tai Chi von Großmeister Frieder Anders – individuell abgestimmt auf Deinen Atemtyp.',
+    ctaPrimary: { text: 'Kostenlos starten', href: '/kurse/online' },
+    ctaSecondary: { text: 'Mehr erfahren', href: '/ueber-uns' },
+    image: '/images/meister-anders-hero.jpg',
   },
+  trustBar: [
+    { icon: '🏆', text: '50+ Jahre Yang-Stil Erfahrung' },
+    { icon: '🎓', text: '6. Generation Yang-Familientradition' },
+    { icon: '🌍', text: 'Erster Europäer mit Meisterwürde' },
+  ],
+  problemSolution: {
+    title: 'Tai Chi für Menschen, die mehr wollen',
+    desc: 'Du suchst nicht einfach nur Bewegung. Du willst echte Veränderung – mehr Ruhe, weniger Anspannung, eine Kraft, die von innen kommt. Aber vielleicht fragst Du Dich: Wo finde ich authentisches Tai Chi? Und passt das zu mir?',
+    cards: [
+      {
+        problem: 'Stress & innere Unruhe',
+        solution: 'Tiefe Entspannung durch bewusste Bewegung',
+      },
+      {
+        problem: 'Rückenschmerzen & Verspannungen',
+        solution: 'Natürliche Haltungskorrektur ohne Anstrengung',
+      },
+      {
+        problem: '„Normales" Tai Chi fühlt sich falsch an',
+        solution: 'Atemtyp-Methode: endlich die richtige Variante für Dich',
+      },
+    ],
+  },
+  atemtypUSP: {
+    subtitle: 'Unser einzigartiger Ansatz',
+    title: 'Atemtyp Tai Chi',
+    desc: 'So wie Sonne und Mond unseren Planeten beeinflussen, prägen sie auch Deinen Körper. Je nachdem, welcher Einfluss bei Deiner Geburt stärker war, bist Du zeitlebens **Einatmer** (lunar) oder **Ausatmer** (solar).',
+    keyMessage: 'Erst Tai Chi im eigenen Atemtyp eröffnet den Zugang zu Deiner wahren inneren Kraft.',
+    einatmer: {
+      symbol: '☽',
+      name: 'Einatmer (lunar)',
+      desc: 'Braucht die Fülle, steigt nach oben',
+    },
+    ausatmer: {
+      symbol: '☀',
+      name: 'Ausatmer (solar)',
+      desc: 'Braucht die Leere, sinkt zur Erde',
+    },
+    cta: { text: 'Welcher Atemtyp bist Du?', href: '/methode/test' },
+  },
+  coursePath: {
+    title: 'Dein Weg zur inneren Kraft',
+    stages: [
+      {
+        number: 1,
+        name: 'KURZFORM',
+        price: 'KOSTENLOS',
+        desc: 'Der perfekte Einstieg – 10 Videos für Deinen Atemtyp',
+        features: ['10 Videos', 'Für beide Atemtypen'],
+        cta: { text: 'Jetzt kostenlos starten', href: '/kurse/online' },
+      },
+      {
+        number: 2,
+        name: 'LANGFORM',
+        price: 'ab €399',
+        desc: 'Die klassische Yang-Form in drei Teilen: Erde, Himmel, Mensch',
+        features: ['81 Formen', '3 Teile'],
+        cta: { text: 'Mehr erfahren', href: '/kurse/online' },
+      },
+      {
+        number: 3,
+        name: 'VERTIEFUNG',
+        price: '€2.299',
+        desc: 'Die 7 Tore zur inneren Kraft – alle Geheimnisse der Meister',
+        features: ['7 Tore', 'Komplettpaket'],
+        cta: { text: 'Meisterpaket ansehen', href: '/kurse/online' },
+      },
+    ],
+  },
+  meister: {
+    subtitle: 'Der Meister',
+    name: 'Frieder Anders',
+    title: 'Großmeister der 6. Generation der Yang-Familientradition',
+    desc: 'Der erste Europäer, der als Meister der Yang-Familientradition anerkannt wurde. 26 Jahre Ausbildung bei Meister K.H. Chu in London. Über 50 Jahre Erfahrung im Yang-Stil.',
+    image: '/images/meister-anders.jpg',
+    cta: { text: 'Mehr über den Meister', href: '/ueber-uns/meister' },
+  },
+  faq: [
+    {
+      question: 'Brauche ich Vorkenntnisse?',
+      answer: 'Nein. Die Kurzform ist speziell für Einsteiger konzipiert. Du lernst alles Schritt für Schritt.',
+    },
+    {
+      question: 'Bin ich zu alt/unbeweglich für Tai Chi?',
+      answer: 'Tai Chi ist für jedes Alter geeignet. Die langsamen Bewegungen schonen die Gelenke und verbessern die Beweglichkeit sanft.',
+    },
+    {
+      question: 'Was unterscheidet euch von anderen Tai-Chi-Schulen?',
+      answer: 'Unsere Atemtyp-Methode. Du lernst die Form, die zu Deinem Körper passt – nicht eine Einheitslösung für alle.',
+    },
+    {
+      question: 'Wie lange dauert es, bis ich Ergebnisse spüre?',
+      answer: 'Viele berichten schon nach wenigen Wochen von mehr Ruhe und besserer Haltung. Die Kurzform kannst Du in 4-6 Wochen lernen.',
+    },
+  ],
+  finalCTA: {
+    title: 'Bereit für den ersten Schritt?',
+    desc: 'Starte jetzt kostenlos mit der Kurzform – 10 Videos, individuell für Deinen Atemtyp.',
+    cta: { text: 'Jetzt kostenlos starten', href: '/kurse/online' },
+    smallPrint: 'Keine Kreditkarte erforderlich. Sofortiger Zugang.',
+  },
+  // Legacy fields für Kompatibilität
   benefits: [
     { icon: '☯', title: 'Innere Kraft', desc: 'Befreie Dich von Anstrengung und erlebe, wie Deine innere Kraft aus dem Nicht-Tun erwächst.' },
     { icon: '◎', title: 'Ruhe & Balance', desc: 'Erreiche mit jedem Atemzug tiefe Ruhe und emotionale Balance – die Basis für Harmonie im Leben.' },

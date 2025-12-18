@@ -6,9 +6,10 @@ interface CardProps {
   href?: string
   variant?: 'default' | 'hover' | 'highlight'
   className?: string
+  onClick?: () => void
 }
 
-export default function Card({ children, href, variant = 'default', className = '' }: CardProps) {
+export default function Card({ children, href, variant = 'default', className = '', onClick }: CardProps) {
   const baseClasses = 'rounded-lg border border-border bg-white p-6 transition-all'
   
   const variantClasses = {
@@ -27,7 +28,11 @@ export default function Card({ children, href, variant = 'default', className = 
     )
   }
 
-  return <div className={classes}>{children}</div>
+  return (
+    <div className={classes} onClick={onClick}>
+      {children}
+    </div>
+  )
 }
 
 

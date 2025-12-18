@@ -39,6 +39,7 @@ export default function Nav() {
                   </Link>
                 )
               } else if ('key' in item && item.key) {
+                const overviewHref = `/${item.key}`
                 return (
                   <div
                     key={item.key}
@@ -46,9 +47,12 @@ export default function Nav() {
                     onMouseEnter={() => setOpenMenu(item.key)}
                     onMouseLeave={() => setOpenMenu(null)}
                   >
-                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2">
+                    <Link
+                      href={overviewHref}
+                      className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
+                    >
                       {item.label}
-                    </button>
+                    </Link>
                     {/* Unsichtbare Verbindungsbrücke - erweitert die aktive Fläche vom Button zum Megamenü */}
                     {openMenu === item.key && (
                       <div className="absolute left-0 right-0 top-full h-4 bg-transparent" />
@@ -86,6 +90,7 @@ export default function Nav() {
                   </Link>
                 )
               } else if ('key' in item && item.key) {
+                const overviewHref = `/${item.key}`
                 return (
                   <div
                     key={item.key}
@@ -93,9 +98,12 @@ export default function Nav() {
                     onMouseEnter={() => setOpenMenu(item.key)}
                     onMouseLeave={() => setOpenMenu(null)}
                   >
-                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2">
+                    <Link
+                      href={overviewHref}
+                      className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
+                    >
                       {item.label}
-                    </button>
+                    </Link>
                     {/* Unsichtbare Verbindungsbrücke - erweitert die aktive Fläche vom Button zum Megamenü */}
                     {openMenu === item.key && (
                       <div className="absolute left-0 right-0 top-full h-4 bg-transparent" />
@@ -133,12 +141,12 @@ export default function Nav() {
           <div className="absolute left-0 right-0 -top-4 h-4 bg-transparent" />
           <div className="w-full px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+              <div className="flex flex-wrap justify-center gap-8">
                 {(menuItems[openMenu as keyof typeof menuItems]?.items ?? []).map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group block rounded-lg border border-transparent p-6 transition-all hover:border-primary/20 hover:bg-background-alt hover:shadow-md w-full max-w-xs"
+                    className="group block rounded-lg border border-transparent p-6 transition-all hover:border-primary/20 hover:bg-background-alt hover:shadow-md w-full max-w-xs md:w-auto md:flex-1 md:min-w-[250px] md:max-w-[300px]"
                     onClick={() => setOpenMenu(null)}
                   >
                     <div className="mb-2 font-display text-xl font-normal text-dark group-hover:text-primary transition-colors">
@@ -168,14 +176,18 @@ export default function Nav() {
             </Link>
             {Object.entries(menuItems).map(([key, menu]) => (
               <div key={key} className="mb-6">
-                <div className="mb-2 text-sm font-semibold uppercase tracking-wider text-primary">
+                <Link
+                  href={`/${key}`}
+                  className="mb-2 block text-sm font-semibold uppercase tracking-wider text-primary"
+                  onClick={() => setOpenMenu(null)}
+                >
                   {menu.label}
-                </div>
+                </Link>
                 {menu.items.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block py-2 text-dark hover:text-primary"
+                    className="block py-2 pl-4 text-dark hover:text-primary"
                     onClick={() => setOpenMenu(null)}
                   >
                     {item.label}
