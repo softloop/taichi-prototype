@@ -133,12 +133,12 @@ export default function Nav() {
           <div className="absolute left-0 right-0 -top-4 h-4 bg-transparent" />
           <div className="w-full px-4 py-12 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-7xl">
-              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
                 {(menuItems[openMenu as keyof typeof menuItems]?.items ?? []).map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="group block rounded-lg border border-transparent p-6 transition-all hover:border-primary/20 hover:bg-background-alt hover:shadow-md"
+                    className="group block rounded-lg border border-transparent p-6 transition-all hover:border-primary/20 hover:bg-background-alt hover:shadow-md w-full max-w-xs"
                     onClick={() => setOpenMenu(null)}
                   >
                     <div className="mb-2 font-display text-xl font-normal text-dark group-hover:text-primary transition-colors">
