@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Sora:wght@100..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-marcellus: 'Marcellus', serif;
+  --font-sora: 'Sora', sans-serif;
+}
+
+body {
+  @apply bg-background text-dark font-body;
+  font-family: var(--font-sora), sans-serif;
+}
+
+
+
