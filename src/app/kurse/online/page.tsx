@@ -196,8 +196,8 @@ export default function OnlineKursePage() {
       <Section bg="white">
         <Container className="py-16 md:py-24">
           <SectionTitle
-            subtitle={onlineKurseDetail.buch.subtitle}
-            title={onlineKurseDetail.buch.title}
+            subtitle="VERTIEFENDE LEKTÜRE"
+            title={onlineKurseDetail.buch.titel}
             className="mb-8 text-center"
           />
           <div className="mx-auto max-w-3xl">

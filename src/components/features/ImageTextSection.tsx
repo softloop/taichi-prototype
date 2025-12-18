@@ -1,10 +1,11 @@
+import { ReactNode } from 'react'
 import Button from '@/components/ui/Button'
 
 interface ImageTextSectionProps {
   imageLeft: boolean
-  subline: string
+  subline?: string
   title: string
-  desc: string
+  desc: string | ReactNode
   cta: { text: string; href: string }
   imageSrc?: string
   imageAlt?: string
@@ -39,7 +40,7 @@ export default function ImageTextSection({
         </p>
       )}
       <h2 className="mb-4 font-display text-3xl font-normal text-dark md:text-4xl">{title}</h2>
-      <p className="mb-6 text-lg leading-relaxed text-dark/80">{desc}</p>
+      <div className="mb-6 text-lg leading-relaxed text-dark/80">{desc}</div>
       {cta.text && (
         <Button href={cta.href} variant="primary">
           {cta.text}
