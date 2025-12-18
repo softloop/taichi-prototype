@@ -21,3 +21,5 @@ export default function TrustBar({ items }: TrustBarProps) {
   )
 }
 
+
+

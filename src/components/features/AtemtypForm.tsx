@@ -278,3 +278,5 @@ export default function AtemtypForm({ onSubmit, onCancel }: AtemtypFormProps) {
     </form>
   )
 }
+
+

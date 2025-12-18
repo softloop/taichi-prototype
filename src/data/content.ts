@@ -701,21 +701,18 @@ export const methodePage = {
   sections: [
     {
       imageLeft: true,
-      subline: '01',
       title: 'Innere Kraft',
       desc: 'Was innere Kraft bedeutet – im Alltag und in der Kampfkunst Tai Chi. Emotionale Stabilität, Resilienz und Authentizität auf der einen Seite. Die Fähigkeit, einen Angreifer ohne Muskelkraft auf Distanz zu halten auf der anderen. Beides entspringt derselben Quelle: dem Nicht-Tun im Tun.',
       cta: { text: 'Mehr über innere Kraft →', href: '/methode/innere-kraft' },
     },
     {
       imageLeft: false,
-      subline: '02',
       title: 'Atemtyp Tai Chi',
       desc: 'So wie Sonne und Mond unseren Planeten beeinflussen, prägen sie auch unseren Organismus. Je nachdem, welcher Einfluss bei Deiner Geburt stärker war, bist Du zeitlebens Einatmer (lunar) oder Ausatmer (solar). Erst Tai Chi im eigenen Atemtyp eröffnet den Zugang zur inneren Kraft.',
       cta: { text: 'Atemtyp verstehen →', href: '/methode/atemtyp' },
     },
     {
       imageLeft: true,
-      subline: '03',
       title: 'Welcher Atemtyp bist Du?',
       desc: 'Bist Du Einatmer oder Ausatmer? Die Antwort bestimmt, wie Du stehst, Dich bewegst und atmest – und wie Du Tai Chi üben solltest. Finde es heraus und beginne Deine individuelle Praxis mit den richtigen Übungen für Deinen Typ.',
       cta: { text: 'Atemtyp-Test starten →', href: '/methode/test' },

@@ -43,7 +43,7 @@ export default function LiveKursePage() {
           <Grid cols={3} gap="lg">
             <Card
               variant="hover"
-              className="p-6 cursor-pointer"
+              className="group relative p-6 cursor-pointer transition-all hover:shadow-lg"
               onClick={() => {
                 document.getElementById('webinare')?.scrollIntoView({ behavior: 'smooth' })
               }}
@@ -51,11 +51,18 @@ export default function LiveKursePage() {
               <h3 className="mb-3 font-display text-xl font-normal text-dark">
                 {liveKurseDetail.einleitung[0].title}
               </h3>
-              <p className="text-dark/80">{liveKurseDetail.einleitung[0].desc}</p>
+              <p className="mb-4 text-dark/80">{liveKurseDetail.einleitung[0].desc}</p>
+              {/* Scroll-Indikator */}
+              <div className="flex items-center text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="mr-2">Zum Abschnitt scrollen</span>
+                <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
             </Card>
             <Card
               variant="hover"
-              className="p-6 cursor-pointer"
+              className="group relative p-6 cursor-pointer transition-all hover:shadow-lg"
               onClick={() => {
                 document.getElementById('zoom-meeting')?.scrollIntoView({ behavior: 'smooth' })
               }}
@@ -63,11 +70,18 @@ export default function LiveKursePage() {
               <h3 className="mb-3 font-display text-xl font-normal text-dark">
                 {liveKurseDetail.einleitung[1].title}
               </h3>
-              <p className="text-dark/80">{liveKurseDetail.einleitung[1].desc}</p>
+              <p className="mb-4 text-dark/80">{liveKurseDetail.einleitung[1].desc}</p>
+              {/* Scroll-Indikator */}
+              <div className="flex items-center text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="mr-2">Zum Abschnitt scrollen</span>
+                <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
             </Card>
             <Card
               variant="hover"
-              className="p-6 cursor-pointer"
+              className="group relative p-6 cursor-pointer transition-all hover:shadow-lg"
               onClick={() => {
                 document.getElementById('einzelunterricht')?.scrollIntoView({ behavior: 'smooth' })
               }}
@@ -75,7 +89,14 @@ export default function LiveKursePage() {
               <h3 className="mb-3 font-display text-xl font-normal text-dark">
                 {liveKurseDetail.einleitung[2].title}
               </h3>
-              <p className="text-dark/80">{liveKurseDetail.einleitung[2].desc}</p>
+              <p className="mb-4 text-dark/80">{liveKurseDetail.einleitung[2].desc}</p>
+              {/* Scroll-Indikator */}
+              <div className="flex items-center text-sm font-semibold text-primary opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="mr-2">Zum Abschnitt scrollen</span>
+                <svg className="h-4 w-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </div>
             </Card>
           </Grid>
         </Container>

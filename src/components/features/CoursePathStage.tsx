@@ -42,3 +42,5 @@ export default function CoursePathStage({ number, name, price, desc, features, c
   )
 }
 
+
+
