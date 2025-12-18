@@ -33,7 +33,7 @@ export default function Nav() {
                   <Link
                     key={idx}
                     href={item.href}
-                    className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
+                    className="flex items-center text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
                   >
                     {item.label}
                   </Link>
@@ -49,7 +49,7 @@ export default function Nav() {
                   >
                     <Link
                       href={overviewHref}
-                      className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
+                      className="flex items-center text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
                     >
                       {item.label}
                     </Link>
@@ -75,7 +75,7 @@ export default function Nav() {
               if (item.type === 'link' && item.href) {
                 const isLogin = item.label === 'LOGIN'
                 const baseClasses =
-                  'text-sm font-semibold uppercase tracking-wider transition-colors py-2'
+                  'flex items-center text-sm font-semibold uppercase tracking-wider transition-colors py-2'
                 const loginClasses =
                   'rounded-full bg-background-alt px-4 py-2 text-dark hover:bg-primary hover:text-white'
                 const defaultClasses = 'text-dark hover:text-primary'
@@ -100,7 +100,7 @@ export default function Nav() {
                   >
                     <Link
                       href={overviewHref}
-                      className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
+                      className="flex items-center text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
                     >
                       {item.label}
                     </Link>

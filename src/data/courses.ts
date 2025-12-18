@@ -210,11 +210,12 @@ export const onlineKurseDetail = {
   },
   buch: {
     subtitle: 'VERTIEFENDE LEKTÜRE',
-    title: 'Atemtyp Tai Chi',
+    titel: 'Atemtyp Tai Chi',
     untertitel: 'Die lange Yang-Form',
     autor: 'Frieder Anders',
-    verlag: 'Tredition, 2024',
-    desc: 'Das umfassende Lehrbuch mit detaillierten Anleitungen für beide Atemtypen. Ideal als Begleitung zu den Online-Kursen.',
+    verlag: 'Tredition',
+    jahr: '2024',
+    beschreibung: 'Das umfassende Lehrbuch mit detaillierten Anleitungen für beide Atemtypen. Ideal als Begleitung zu den Online-Kursen.',
     cta: { text: 'Beim Verlag bestellen →', href: '#' },
   },
   faq: [

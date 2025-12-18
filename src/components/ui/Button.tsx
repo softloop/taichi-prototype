@@ -8,9 +8,10 @@ interface ButtonProps {
   className?: string
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
-export default function Button({ children, href, variant = 'primary', className = '', onClick, type = 'button' }: ButtonProps) {
+export default function Button({ children, href, variant = 'primary', className = '', onClick, type = 'button', disabled = false }: ButtonProps) {
   const baseClasses = 'inline-flex items-center justify-center px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors'
   
   const variantClasses = {
@@ -19,7 +20,8 @@ export default function Button({ children, href, variant = 'primary', className 
     full: 'w-full bg-primary text-white hover:bg-primary-dark',
   }
 
-  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`
+  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : ''
+  const classes = `${baseClasses} ${variantClasses[variant]} ${disabledClasses} ${className}`
 
   if (href) {
     // External URLs should use regular <a> tag
@@ -38,7 +40,7 @@ export default function Button({ children, href, variant = 'primary', className 
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   )
