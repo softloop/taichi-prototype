@@ -1,60 +1,102 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
-import PageHero from '@/components/layout/PageHero'
 import Grid from '@/components/layout/Grid'
-import Card from '@/components/ui/Card'
+import ImageTextSection from '@/components/features/ImageTextSection'
 import Button from '@/components/ui/Button'
+import { ueberUnsPage } from '@/data/content'
 
 export default function UeberUnsPage() {
   return (
     <>
-      <PageHero
-        title="Über uns"
-        desc="Deutschlands älteste Tai-Chi-Schule – authentische Tradition, moderne Vermittlung."
-      />
+      {/* Hero */}
+      <Section bg="base">
+        <Container className="py-16 md:py-24">
+          <div className="text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-primary">
+              {ueberUnsPage.hero.subtitle}
+            </p>
+            <h1 className="mb-6 font-display text-4xl font-normal md:text-5xl text-dark">
+              {ueberUnsPage.hero.title}
+            </h1>
+            <p className="mx-auto max-w-3xl text-lg text-dark/80">
+              {ueberUnsPage.hero.desc}
+            </p>
+          </div>
+        </Container>
+      </Section>
 
+      {/* Drei Bild-Text-Sektionen */}
+      {ueberUnsPage.sections.map((section, idx) => (
+        <Section key={idx} bg={idx % 2 === 0 ? 'white' : 'base'}>
+          <Container className="py-16 md:py-24">
+            <ImageTextSection {...section} />
+          </Container>
+        </Section>
+      ))}
+
+      {/* Kurztext: Unsere Geschichte */}
       <Section bg="white">
         <Container className="py-16 md:py-24">
-          <Grid cols={3} gap="lg">
-            <Card variant="hover" href="/ueber-uns/meister" className="text-center">
-              <div className="mb-4 text-4xl">👨‍🏫</div>
-              <h3 className="mb-2 font-display text-2xl font-normal text-dark">
-                Der Meister
-              </h3>
-              <p className="mb-4 text-dark/80">
-                Großmeister Frieder Anders – 6. Generation Yang-Tradition
-              </p>
-              <Button href="/ueber-uns/meister" variant="secondary" className="w-full">
-                Mehr erfahren
-              </Button>
-            </Card>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-6 font-display text-3xl font-normal text-dark md:text-4xl">
+              {ueberUnsPage.geschichte.title}
+            </h2>
+            <p className="text-lg leading-relaxed text-dark/80">
+              {ueberUnsPage.geschichte.desc}
+            </p>
+          </div>
+        </Container>
+      </Section>
 
-            <Card variant="hover" href="/ueber-uns/tradition" className="text-center">
-              <div className="mb-4 text-4xl">⚖️</div>
-              <h3 className="mb-2 font-display text-2xl font-normal text-dark">
-                Tradition & Moderne
-              </h3>
-              <p className="mb-4 text-dark/80">
-                Philosophie zwischen Ost und West
-              </p>
-              <Button href="/ueber-uns/tradition" variant="secondary" className="w-full">
-                Mehr erfahren
-              </Button>
-            </Card>
-
-            <Card variant="hover" href="/ueber-uns/lehrer" className="text-center">
-              <div className="mb-4 text-4xl">👥</div>
-              <h3 className="mb-2 font-display text-2xl font-normal text-dark">
-                Zertifizierte Lehrer
-              </h3>
-              <p className="mb-4 text-dark/80">
-                Finde einen Lehrer in deiner Nähe
-              </p>
-              <Button href="/ueber-uns/lehrer" variant="secondary" className="w-full">
-                Mehr erfahren
-              </Button>
-            </Card>
+      {/* Zahlen & Fakten */}
+      <Section bg="base">
+        <Container className="py-16 md:py-24">
+          <h2 className="mb-12 text-center font-display text-3xl font-normal text-dark md:text-4xl">
+            {ueberUnsPage.zahlen.title}
+          </h2>
+          <Grid cols={4} gap="lg">
+            {ueberUnsPage.zahlen.stats.map((stat, idx) => (
+              <div key={idx} className="text-center">
+                <div className="mb-2 font-display text-4xl font-normal text-primary md:text-5xl">
+                  {stat.number}
+                </div>
+                <p className="text-dark/80">{stat.description}</p>
+              </div>
+            ))}
           </Grid>
+        </Container>
+      </Section>
+
+      {/* Zitat */}
+      <Section bg="base">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <blockquote className="mb-4 text-2xl italic leading-relaxed text-dark/90 md:text-3xl">
+              {ueberUnsPage.zitat.text}
+            </blockquote>
+            <p className="text-lg text-dark/60">— {ueberUnsPage.zitat.author}</p>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Finaler CTA */}
+      <Section bg="dark">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="mb-4 font-display text-4xl font-normal text-white">
+              {ueberUnsPage.finalCTA.title}
+            </h2>
+            <p className="mb-8 text-lg text-white/80">
+              {ueberUnsPage.finalCTA.desc}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              {ueberUnsPage.finalCTA.ctas.map((cta, idx) => (
+                <Button key={idx} href={cta.href} variant="primary">
+                  {cta.text}
+                </Button>
+              ))}
+            </div>
+          </div>
         </Container>
       </Section>
     </>

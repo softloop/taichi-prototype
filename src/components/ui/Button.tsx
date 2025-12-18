@@ -22,6 +22,14 @@ export default function Button({ children, href, variant = 'primary', className 
   const classes = `${baseClasses} ${variantClasses[variant]} ${className}`
 
   if (href) {
+    // External URLs should use regular <a> tag
+    if (href.startsWith('http://') || href.startsWith('https://')) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+          {children}
+        </a>
+      )
+    }
     return (
       <Link href={href} className={classes}>
         {children}
