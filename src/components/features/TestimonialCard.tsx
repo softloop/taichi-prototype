@@ -16,3 +16,6 @@ export default function TestimonialCard({ name, text }: TestimonialCardProps) {
 
 
 
+
+
+

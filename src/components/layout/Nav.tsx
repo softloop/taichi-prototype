@@ -22,23 +22,23 @@ export default function Nav() {
   ]
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-white">
+    <nav className="sticky top-0 z-50 border-b border-border bg-white relative">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           {/* Links vom Logo */}
           <div className="hidden lg:flex lg:items-center lg:gap-8">
             {leftMenuItems.map((item, idx) => {
-              if (item.type === 'link') {
+              if (item.type === 'link' && item.href) {
                 return (
                   <Link
                     key={idx}
                     href={item.href}
-                    className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary"
+                    className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2"
                   >
                     {item.label}
                   </Link>
                 )
-              } else {
+              } else if ('key' in item && item.key) {
                 return (
                   <div
                     key={item.key}
@@ -46,27 +46,17 @@ export default function Nav() {
                     onMouseEnter={() => setOpenMenu(item.key)}
                     onMouseLeave={() => setOpenMenu(null)}
                   >
-                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary">
+                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2">
                       {item.label}
                     </button>
+                    {/* Unsichtbare Verbindungsbrücke - erweitert die aktive Fläche vom Button zum Megamenü */}
                     {openMenu === item.key && (
-                      <div className="absolute left-0 top-full mt-2 w-64 rounded-lg border border-border bg-white p-6 shadow-lg">
-                        {item.items.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className="block py-3 hover:text-primary"
-                            onClick={() => setOpenMenu(null)}
-                          >
-                            <div className="font-semibold text-dark">{subItem.label}</div>
-                            <div className="mt-1 text-sm text-dark/70">{subItem.desc}</div>
-                          </Link>
-                        ))}
-                      </div>
+                      <div className="absolute left-0 right-0 top-full h-4 bg-transparent" />
                     )}
                   </div>
                 )
               }
+              return null
             })}
           </div>
 
@@ -78,10 +68,10 @@ export default function Nav() {
           {/* Rechts vom Logo */}
           <div className="hidden lg:flex lg:items-center lg:gap-8">
             {rightMenuItems.map((item, idx) => {
-              if (item.type === 'link') {
+              if (item.type === 'link' && item.href) {
                 const isLogin = item.label === 'LOGIN'
                 const baseClasses =
-                  'text-sm font-semibold uppercase tracking-wider transition-colors'
+                  'text-sm font-semibold uppercase tracking-wider transition-colors py-2'
                 const loginClasses =
                   'rounded-full bg-background-alt px-4 py-2 text-dark hover:bg-primary hover:text-white'
                 const defaultClasses = 'text-dark hover:text-primary'
@@ -95,7 +85,7 @@ export default function Nav() {
                     {item.label}
                   </Link>
                 )
-              } else {
+              } else if ('key' in item && item.key) {
                 return (
                   <div
                     key={item.key}
@@ -103,27 +93,17 @@ export default function Nav() {
                     onMouseEnter={() => setOpenMenu(item.key)}
                     onMouseLeave={() => setOpenMenu(null)}
                   >
-                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary">
+                    <button className="text-sm font-semibold uppercase tracking-wider text-dark hover:text-primary py-2">
                       {item.label}
                     </button>
+                    {/* Unsichtbare Verbindungsbrücke - erweitert die aktive Fläche vom Button zum Megamenü */}
                     {openMenu === item.key && (
-                      <div className="absolute right-0 top-full mt-2 w-64 rounded-lg border border-border bg-white p-6 shadow-lg">
-                        {item.items.map((subItem) => (
-                          <Link
-                            key={subItem.href}
-                            href={subItem.href}
-                            className="block py-3 hover:text-primary"
-                            onClick={() => setOpenMenu(null)}
-                          >
-                            <div className="font-semibold text-dark">{subItem.label}</div>
-                            <div className="mt-1 text-sm text-dark/70">{subItem.desc}</div>
-                          </Link>
-                        ))}
-                      </div>
+                      <div className="absolute left-0 right-0 top-full h-4 bg-transparent" />
                     )}
                   </div>
                 )
               }
+              return null
             })}
           </div>
 
@@ -140,6 +120,40 @@ export default function Nav() {
           </div>
         </div>
       </div>
+
+
+      {/* Desktop MegaMenu: volle Breite unter dem Hauptmenü */}
+      {openMenu && openMenu !== 'mobile' && (
+        <div 
+          className="hidden border-t border-border bg-white shadow-lg lg:block absolute left-0 right-0 top-full"
+          onMouseEnter={() => setOpenMenu(openMenu)}
+          onMouseLeave={() => setOpenMenu(null)}
+        >
+          {/* Unsichtbare Verbindungsbrücke oben - verbindet Button und Megamenü nahtlos */}
+          <div className="absolute left-0 right-0 -top-4 h-4 bg-transparent" />
+          <div className="w-full px-4 py-12 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl">
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+                {(menuItems[openMenu as keyof typeof menuItems]?.items ?? []).map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="group block rounded-lg border border-transparent p-6 transition-all hover:border-primary/20 hover:bg-background-alt hover:shadow-md"
+                    onClick={() => setOpenMenu(null)}
+                  >
+                    <div className="mb-2 font-display text-xl font-normal text-dark group-hover:text-primary transition-colors">
+                      {item.label}
+                    </div>
+                    <div className="text-sm text-dark/70 leading-relaxed">
+                      {item.desc}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Mobile Menu */}
       {openMenu === 'mobile' && (

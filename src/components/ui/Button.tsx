@@ -7,9 +7,10 @@ interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'full'
   className?: string
   onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
 }
 
-export default function Button({ children, href, variant = 'primary', className = '', onClick }: ButtonProps) {
+export default function Button({ children, href, variant = 'primary', className = '', onClick, type = 'button' }: ButtonProps) {
   const baseClasses = 'inline-flex items-center justify-center px-6 py-3 text-sm font-semibold uppercase tracking-wider transition-colors'
   
   const variantClasses = {
@@ -29,7 +30,7 @@ export default function Button({ children, href, variant = 'primary', className 
   }
 
   return (
-    <button onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} className={classes}>
       {children}
     </button>
   )

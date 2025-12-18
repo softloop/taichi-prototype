@@ -139,3 +139,6 @@ Die Website ist für Static Export konfiguriert und kann auf Vercel oder GitHub 
 
 
 
+
+
+

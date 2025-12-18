@@ -23,3 +23,6 @@ export default function LehrerCard({ name, region, atemtyp, angebot }: LehrerCar
 
 
 
+
+
+

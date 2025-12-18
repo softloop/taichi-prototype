@@ -32,3 +32,6 @@ export default function Card({ children, href, variant = 'default', className = 
 
 
 
+
+
+
