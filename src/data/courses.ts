@@ -64,7 +64,7 @@ export const onlineKurseDetail = {
         bonus: '2 Übungshefte (PDF), 2 Bonus-Videos',
         priceAbo: '€19/Monat',
         priceEinmalig: '€199 einmalig',
-        cta: { text: 'Zum Kurs →', href: '#' },
+        cta: { text: 'Zum Kurs →', href: '/kurse/online/langform/teil-ii' },
       },
       {
         part: 'Teil III',
@@ -77,7 +77,7 @@ export const onlineKurseDetail = {
         bonus: '2 Übungshefte (PDF), 2 Bonus-Videos',
         priceAbo: '€19/Monat',
         priceEinmalig: '€199 einmalig',
-        cta: { text: 'Zum Kurs →', href: '#' },
+        cta: { text: 'Zum Kurs →', href: '/kurse/online/langform/teil-iii' },
       },
     ],
     paket: {
@@ -1384,7 +1384,606 @@ export const langformTeilIDetail = {
   },
 }
 
+export const langformTeilIIDetail = {
+  hero: {
+    breadcrumb: [
+      { label: 'Kurse', href: '/kurse' },
+      { label: 'Online', href: '/kurse/online' },
+      { label: 'Langform Teil II', href: '/kurse/online/langform/teil-ii' },
+    ],
+    label: 'HIMMEL · FORTGESCHRITTEN',
+    title: 'Tai Chi Langform Teil II',
+    subtitle: 'Die Öffnung – 30 Formen des „Himmels"',
+    kurzbeschreibung: 'Der zweite Teil der klassischen Yang-Langform. Erweitere Deinen Bewegungsradius in die diagonalen Richtungen und erlebe, wie die Bewegungen leichter werden.',
+    bewertung: {
+      stars: 5,
+      rating: '5.0',
+      teilnehmer: 52,
+    },
+    preis: {
+      aktuell: '€199',
+      abo: 'oder €19/Monat',
+    },
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+    videoPreview: {
+      title: 'Einführungsvideo / Trailer',
+      dauer: '',
+      videoSrc: '#',
+    },
+  },
+  quickFacts: [
+    { icon: '🎬', title: 'Videos', text: '2 × 30+ Lektionen (lunar + solar)' },
+    { icon: '⏱️', title: 'Videodauer', text: 'ca. 8–10 Std. pro Atemtyp' },
+    { icon: '📅', title: 'Lernempfehlung', text: '20–24 Wochen bei täglicher Übung' },
+    { icon: '📱', title: 'Zugang', text: 'Alle Geräte, lebenslang' },
+  ],
+  ueberKurs: {
+    title: 'Über diesen Kurs',
+    desc: 'Der zweite Teil der Langform entspricht dem Symbol des Himmels – die Öffnung. Du erweiterst Deinen Bewegungsradius und entdeckst die diagonalen Richtungen. Du öffnest Dich zum Himmel: Die Bewegungen werden leichter.\n\nDu lernst 30 neue Formen, die auf Teil I aufbauen. Hier kommen klassische Bewegungen wie „Der goldene Hahn steht auf einem Bein", „Die Schlange kriecht am Boden" und „Der Lotus-Tritt" hinzu.\n\nDas Besondere: Mit Teil II beginnt die Arbeit mit den diagonalen Ecken. Die Form wird räumlicher, dynamischer und athletischer – und dennoch bleibt die Entspannung der Schlüssel.\n\nTeil II ist der umfangreichste der drei Teile. Nimm Dir Zeit – hier entwickelt sich die Tiefe Deiner Praxis.',
+    imageSrc: '/images/langform-teil-ii.jpg',
+  },
+  dreiTeile: {
+    title: 'Die Langform im Überblick',
+    desc: 'Die Langform umfasst insgesamt 81 Formen, symbolisch unterteilt in Erde, Himmel und Mensch. Teil II öffnet den Raum.',
+    teile: [
+      {
+        teil: 'Teil I',
+        symbol: '🌍',
+        name: 'Erde',
+        formen: '13 Formen',
+        status: 'Voraussetzung',
+        active: false,
+      },
+      {
+        teil: 'Teil II',
+        symbol: '☁️',
+        name: 'Himmel',
+        formen: '30 Formen',
+        status: '← Dieser Kurs',
+        active: true,
+      },
+      {
+        teil: 'Teil III',
+        symbol: '👤',
+        name: 'Mensch',
+        formen: '38 Formen',
+        status: 'Nächster Schritt',
+        active: false,
+      },
+    ],
+  },
+  atemtypVarianten: {
+    title: 'Für DEINEN Atemtyp',
+    intro: 'Dieser Kurs enthält beide Atemtyp-Varianten. Nach dem Kauf wählst Du Deinen Atemtyp und siehst die passenden Videos.',
+    varianten: [
+      {
+        symbol: '☽',
+        name: 'Lunar (Einatmer)',
+        eigenschaften: ['Aufrechte Haltung', 'Energie steigt nach oben', 'Braucht die Fülle'],
+        lektionen: 30,
+      },
+      {
+        symbol: '☀',
+        name: 'Solar (Ausatmer)',
+        eigenschaften: ['Leicht geneigte Haltung', 'Energie sinkt zur Erde', 'Braucht die Leere'],
+        lektionen: 30,
+      },
+    ],
+    cta: { text: 'Welcher Atemtyp bin ich?', href: '/methode/test' },
+  },
+  wasDuBekommst: {
+    kursinhalte: [
+      { icon: '🎬', text: '30+ Lektionen für Einatmer (lunar)' },
+      { icon: '🎬', text: '30+ Lektionen für Ausatmer (solar)' },
+      { icon: '🧘', text: 'Fortgeschrittene Dao-Übungen' },
+    ],
+    materialien: [
+      { icon: '📖', text: 'Übungsheft Langform Teil II (PDF)' },
+      { icon: '📋', text: 'Formenliste mit Beschreibungen' },
+      { icon: '🗺️', text: 'Schrittdiagramme für die Ecken' },
+    ],
+    zugang: [
+      { icon: '🔓', text: 'Sofortiger Zugang nach Kauf' },
+      { icon: '♾️', text: 'Lebenslang verfügbar' },
+      { icon: '🎁', text: '50% Rabatt für Wien-Kursteilnehmer' },
+    ],
+  },
+  formen: {
+    title: 'Die Formen in Teil II',
+    hinweis: 'Die Formen werden Schritt für Schritt in einzelnen Lektionen erklärt – mit Detailansichten, Wiederholungen und Erklärungen für beide Atemtypen.',
+    abschnitte: [
+      {
+        title: 'Abschnitt A: Die erste Ecke (Formen 14–21)',
+        formen: [
+          { nummer: 14, deutsch: 'Den Schweif des Vogels fassen (links)', chinesisch: 'Lǎn Què Wěi Zuǒ' },
+          { nummer: 15, deutsch: 'Faust unter dem Ellbogen', chinesisch: 'Zhǒu Dǐ Kàn Chuí' },
+          { nummer: 16, deutsch: 'Zurückweichen und den Affen abwehren (rechts)', chinesisch: 'Dào Niǎn Hóu Yòu' },
+          { nummer: 17, deutsch: 'Zurückweichen und den Affen abwehren (links)', chinesisch: 'Dào Niǎn Hóu Zuǒ' },
+          { nummer: 18, deutsch: 'Schräges Fliegen', chinesisch: 'Xié Fēi Shì' },
+          { nummer: 19, deutsch: 'Die Hände heben', chinesisch: 'Tí Shǒu Shàng Shì' },
+          { nummer: 20, deutsch: 'Der weiße Kranich breitet die Flügel aus', chinesisch: 'Bái Hè Liàng Chì' },
+          { nummer: 21, deutsch: 'Das Knie streifen und verdrehen (links)', chinesisch: 'Lōu Xī Ào Bù Zuǒ' },
+        ],
+      },
+      {
+        title: 'Abschnitt B: Die Nadel und der Fächer (Formen 22–28)',
+        formen: [
+          { nummer: 22, deutsch: 'Die Nadel auf den Meeresgrund', chinesisch: 'Hǎi Dǐ Zhēn' },
+          { nummer: 23, deutsch: 'Den Rücken wie ein Fächer ausbreiten', chinesisch: 'Shàn Tōng Bèi' },
+          { nummer: 24, deutsch: 'Umdrehen und mit der Faust stoßen', chinesisch: 'Piě Shēn Chuí' },
+          { nummer: 25, deutsch: 'Schritt vor, abwehren, abfangen, stoßen', chinesisch: 'Jìn Bù Bān Lán Chuí' },
+          { nummer: 26, deutsch: 'Aufsteigen und den Schweif des Vogels fassen', chinesisch: 'Shàng Bù Lǎn Què Wěi' },
+          { nummer: 27, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+          { nummer: 28, deutsch: 'Wolkenhände', chinesisch: 'Yún Shǒu' },
+        ],
+      },
+      {
+        title: 'Abschnitt C: Die zweite Ecke und Tritte (Formen 29–35)',
+        formen: [
+          { nummer: 29, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+          { nummer: 30, deutsch: 'Hoher Schlag auf das Pferd', chinesisch: 'Gāo Tàn Mǎ' },
+          { nummer: 31, deutsch: 'Mit dem rechten Fuß treten', chinesisch: 'Yòu Fēn Jiǎo' },
+          { nummer: 32, deutsch: 'Mit dem linken Fuß treten', chinesisch: 'Zuǒ Fēn Jiǎo' },
+          { nummer: 33, deutsch: 'Umdrehen und mit der Ferse treten', chinesisch: 'Zhuǎn Shēn Dèng Jiǎo' },
+          { nummer: 34, deutsch: 'Das Knie streifen (links, rechts)', chinesisch: 'Lōu Xī Ào Bù' },
+          { nummer: 35, deutsch: 'Vortreten und mit der Faust nach unten schlagen', chinesisch: 'Jìn Bù Zāi Chuí' },
+        ],
+      },
+      {
+        title: 'Abschnitt D: Schlange und Hahn (Formen 36–43)',
+        formen: [
+          { nummer: 36, deutsch: 'Umdrehen und mit der Faust stoßen', chinesisch: 'Piě Shēn Chuí' },
+          { nummer: 37, deutsch: 'Schritt vor, abwehren, abfangen, stoßen', chinesisch: 'Jìn Bù Bān Lán Chuí' },
+          { nummer: 38, deutsch: 'Mit dem rechten Fuß treten', chinesisch: 'Yòu Dèng Jiǎo' },
+          { nummer: 39, deutsch: 'Den Tiger schlagen (links)', chinesisch: 'Zuǒ Dǎ Hǔ Shì' },
+          { nummer: 40, deutsch: 'Den Tiger schlagen (rechts)', chinesisch: 'Yòu Dǎ Hǔ Shì' },
+          { nummer: 41, deutsch: 'Mit dem rechten Fuß treten', chinesisch: 'Yòu Dèng Jiǎo' },
+          { nummer: 42, deutsch: 'Mit beiden Fäusten die Ohren schlagen', chinesisch: 'Shuāng Fēng Guàn Ěr' },
+          { nummer: 43, deutsch: 'Mit dem linken Fuß treten', chinesisch: 'Zuǒ Dèng Jiǎo' },
+        ],
+      },
+    ],
+  },
+  kursinhalt: {
+    title: 'Kursinhalt',
+    hinweis: 'Du wählst nach dem Kauf Deinen Atemtyp. Beide Varianten sind im Kurs enthalten – Du kannst jederzeit wechseln.',
+    tabs: [
+      {
+        name: '☽ Tai Chi Langform Teil II (lunar)',
+        lektionen: [
+          'Einführung & Wiederholung Teil I',
+          'Die erste Ecke – Formen 14–21',
+          'Die Nadel und der Fächer – Formen 22–28',
+          'Die zweite Ecke und Tritte – Formen 29–35',
+          'Schlange und Hahn – Formen 36–43',
+          'Teil II komplett – Durchlauf',
+        ],
+      },
+      {
+        name: '☀ Tai Chi Langform Teil II (solar)',
+        lektionen: [
+          'Einführung & Wiederholung Teil I',
+          'Die erste Ecke – Formen 14–21',
+          'Die Nadel und der Fächer – Formen 22–28',
+          'Die zweite Ecke und Tritte – Formen 29–35',
+          'Schlange und Hahn – Formen 36–43',
+          'Teil II komplett – Durchlauf',
+        ],
+      },
+    ],
+  },
+  voraussetzungen: {
+    title: 'Voraussetzungen',
+    punkte: ['Langform Teil I abgeschlossen', 'Atemtyp bekannt', 'Regelmäßige Übungspraxis etabliert'],
+    hinweis: 'Teil II baut direkt auf Teil I auf. Die Formen setzen voraus, dass Du die ersten 13 Formen sicher beherrschst.',
+  },
+  lehrer: {
+    name: 'Frieder Anders',
+    titel: 'Großmeister der 6. Generation der Yang-Familientradition',
+    text: 'Erster Europäer mit Meisterwürde in der Yang-Tradition (2002). 26 Jahre Ausbildung bei Meister Chu King-Hung. Über 50 Jahre Praxis. Entwickler des Atemtyp Tai Chi.',
+    imageSrc: '/images/meister-anders.jpg',
+    cta: { text: 'Mehr über den Meister', href: '/ueber-uns/meister' },
+  },
+  testimonials: [
+    {
+      name: 'Klaus',
+      text: 'Nach vielen Jahren Tai Chi entdecke ich in den Lernvideos immer wieder neue Einzelheiten, vor allem in den Übergängen.',
+    },
+    {
+      name: 'Katharina',
+      text: 'Ich empfehle die Lernvideos meinen Schülerinnen und Schülern als perfekte Ergänzung zum Unterricht.',
+    },
+    {
+      name: 'Ina',
+      text: 'Mir gefallen besonders die sehr genauen und gut verständlichen Beschreibungen der Bewegungen für beide Atemtypen.',
+    },
+  ],
+  faq: [
+    {
+      question: 'Kann ich Teil II ohne Teil I machen?',
+      answer: 'Nein, Teil II baut direkt auf Teil I auf. Die Formen beginnen dort, wo Teil I endet.',
+    },
+    {
+      question: 'Warum ist Teil II so viel länger als Teil I?',
+      answer: 'Teil II enthält 30 Formen (statt 13) und führt komplexere Bewegungen ein – Tritte, diagonale Richtungen und neue Techniken. Deshalb ist die Lernzeit auch länger.',
+    },
+    {
+      question: 'Bekomme ich beide Atemtyp-Varianten?',
+      answer: 'Ja! Der Kurs enthält sowohl die lunare als auch die solare Variante.',
+    },
+    {
+      question: 'Wie lange habe ich Zugang?',
+      answer: 'Lebenslang. Einmal gekauft, bleibt der Kurs dauerhaft in Deinem Konto.',
+    },
+    {
+      question: 'Kann ich in Raten zahlen?',
+      answer: 'Ja, Du kannst zwischen Einmalzahlung (€199) und monatlicher Zahlung (€19/Monat) wählen.',
+    },
+    {
+      question: 'Wie lange brauche ich für Teil II?',
+      answer: 'Bei täglicher Übung von 15–20 Minuten kannst Du Teil II in 20–24 Wochen abschließen. Nimm Dir die Zeit, die Du brauchst.',
+    },
+  ],
+  preisoptionen: {
+    title: 'Wähle Deine Option',
+    optionen: [
+      {
+        title: 'Einmalzahlung',
+        preis: '€199',
+        beschreibung: 'Einmalig, lebenslanger Zugang',
+        vorteil: 'Günstigster Gesamtpreis',
+        cta: { text: 'Jetzt kaufen', href: '#' },
+      },
+      {
+        title: 'Ratenzahlung',
+        preis: '€19/Monat',
+        beschreibung: '12 Monate, dann lebenslanger Zugang',
+        vorteil: 'Flexibel starten',
+        cta: { text: 'Mit Ratenzahlung starten', href: '#' },
+      },
+    ],
+    paketTip: {
+      title: '💡 TIPP: LANGFORM KOMPLETT-PAKET',
+      desc: 'Alle drei Teile der Langform zum Vorteilspreis:',
+      preis: '€497 statt €597 (spare €100)',
+      cta: { text: 'Zum Komplett-Paket', href: '/kurse/online#langform' },
+    },
+    wienRabatt: {
+      title: '🎁 FÜR WIEN-KURSTEILNEHMER',
+      desc: 'Du besuchst einen Präsenzkurs in Wien? Dann erhältst Du 50% Rabatt auf alle Online-Kurse.',
+      cta: { text: 'Rabattcode anfordern', href: '#' },
+    },
+  },
+  naechsterSchritt: {
+    title: 'Dein nächster Schritt nach Teil II',
+    kurs: {
+      name: 'Langform Teil III',
+      desc: 'Der Mensch – 38 Formen, Vollendung der Form',
+      preis: '€199 oder €19/Monat',
+    },
+  },
+  finalCTA: {
+    title: 'Bereit für die Öffnung zum Himmel?',
+    preis: '€199',
+    preisAbo: 'oder €19/Monat',
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+  },
+}
 
 
 
 
+
+
+export const langformTeilIIIDetail = {
+  hero: {
+    breadcrumb: [
+      { label: 'Kurse', href: '/kurse' },
+      { label: 'Online', href: '/kurse/online' },
+      { label: 'Langform Teil III', href: '/kurse/online/langform/teil-iii' },
+    ],
+    label: 'MENSCH · MEISTERSCHAFT',
+    title: 'Tai Chi Langform Teil III',
+    subtitle: 'Die Vollendung – 38 Formen des „Menschen"',
+    kurzbeschreibung: 'Der dritte und letzte Teil der klassischen Yang-Langform. Verbinde Himmel und Erde – und vollende die Form mit 81 Bewegungen.',
+    bewertung: {
+      stars: 5,
+      rating: '5.0',
+      teilnehmer: 38,
+    },
+    preis: {
+      aktuell: '€199',
+      abo: 'oder €19/Monat',
+    },
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+    videoPreview: {
+      title: 'Einführungsvideo / Trailer',
+      dauer: '',
+      videoSrc: '#',
+    },
+  },
+  quickFacts: [
+    { icon: '🎬', title: 'Videos', text: '2 × 38+ Lektionen (lunar + solar)' },
+    { icon: '⏱️', title: 'Videodauer', text: 'ca. 10–12 Std. pro Atemtyp' },
+    { icon: '📅', title: 'Lernempfehlung', text: '12–14 Wochen bei täglicher Übung' },
+    { icon: '📱', title: 'Zugang', text: 'Alle Geräte, lebenslang' },
+  ],
+  ueberKurs: {
+    title: 'Über diesen Kurs',
+    desc: 'Der dritte Teil der Langform entspricht dem Symbol des Menschen – die Verbindung von Himmel und Erde. Der Mensch verbindet himmlische und irdische Anteile in sich.\n\nDu lernst die letzten 38 Formen der klassischen Yang-Langform. Hier kommen kraftvolle Bewegungen wie „Das Pferd von beiden Seiten besteigen", „Der Lotus-Tritt" und „Der Bogen spannen" hinzu. Am Ende steht die Vollendung: 81 Formen in einem fließenden Durchlauf.\n\nDas Besondere: Teil III fordert Deinen Kopf – es geht darum, den vollständigen Ablauf zu verinnerlichen. Gleichzeitig vertieft sich die innere Arbeit: Die Form wird zur Meditation in Bewegung.\n\nMit dem Abschluss von Teil III beherrschst Du die vollständige Yang-Langform in der Tradition von Meister Chu King-Hung – eine Leistung, die nur wenige erreichen.',
+    imageSrc: '/images/langform-teil-iii.jpg',
+  },
+  dreiTeile: {
+    title: 'Die Langform im Überblick',
+    desc: 'Die Langform umfasst insgesamt 81 Formen, symbolisch unterteilt in Erde, Himmel und Mensch. Teil III vollendet die Form.',
+    teile: [
+      {
+        teil: 'Teil I',
+        symbol: '🌍',
+        name: 'Erde',
+        formen: '13 Formen',
+        status: 'Voraussetzung',
+        active: false,
+      },
+      {
+        teil: 'Teil II',
+        symbol: '☁️',
+        name: 'Himmel',
+        formen: '30 Formen',
+        status: 'Voraussetzung',
+        active: false,
+      },
+      {
+        teil: 'Teil III',
+        symbol: '👤',
+        name: 'Mensch',
+        formen: '38 Formen',
+        status: '← Dieser Kurs',
+        active: true,
+      },
+    ],
+  },
+  atemtypVarianten: {
+    title: 'Für DEINEN Atemtyp',
+    intro: 'Dieser Kurs enthält beide Atemtyp-Varianten. Nach dem Kauf wählst Du Deinen Atemtyp und siehst die passenden Videos.',
+    varianten: [
+      {
+        symbol: '☽',
+        name: 'Lunar (Einatmer)',
+        eigenschaften: ['Aufrechte Haltung', 'Energie steigt nach oben', 'Braucht die Fülle'],
+        lektionen: 38,
+      },
+      {
+        symbol: '☀',
+        name: 'Solar (Ausatmer)',
+        eigenschaften: ['Leicht geneigte Haltung', 'Energie sinkt zur Erde', 'Braucht die Leere'],
+        lektionen: 38,
+      },
+    ],
+    cta: { text: 'Welcher Atemtyp bin ich?', href: '/methode/test' },
+  },
+  wasDuBekommst: {
+    kursinhalte: [
+      { icon: '🎬', text: '38+ Lektionen für Einatmer (lunar)' },
+      { icon: '🎬', text: '38+ Lektionen für Ausatmer (solar)' },
+      { icon: '🎬', text: 'Kompletter Durchlauf aller 81 Formen' },
+    ],
+    materialien: [
+      { icon: '📖', text: 'Übungsheft Langform Teil III (PDF)' },
+      { icon: '📋', text: 'Vollständige Formenliste (81 Formen)' },
+      { icon: '🗺️', text: 'Schrittdiagramme für alle Richtungen' },
+    ],
+    zugang: [
+      { icon: '🔓', text: 'Sofortiger Zugang nach Kauf' },
+      { icon: '♾️', text: 'Lebenslang verfügbar' },
+      { icon: '🎁', text: '50% Rabatt für Wien-Kursteilnehmer' },
+    ],
+  },
+  formen: {
+    title: 'Die Formen in Teil III',
+    hinweis: 'Die Formen werden Schritt für Schritt in einzelnen Lektionen erklärt – mit Detailansichten, Wiederholungen und Erklärungen für beide Atemtypen. Am Ende steht ein kompletter Durchlauf aller 81 Formen.',
+    abschnitte: [
+      {
+        title: 'Abschnitt A: Umdrehen und neue Richtungen (Formen 44–52)',
+        formen: [
+          { nummer: 44, deutsch: 'Umdrehen und mit der Ferse treten', chinesisch: 'Zhuǎn Shēn Dèng Jiǎo' },
+          { nummer: 45, deutsch: 'Schritt vor, abwehren, abfangen, stoßen', chinesisch: 'Jìn Bù Bān Lán Chuí' },
+          { nummer: 46, deutsch: 'Wie versiegelt, wie verschlossen', chinesisch: 'Rú Fēng Sì Bì' },
+          { nummer: 47, deutsch: 'Die Hände kreuzen', chinesisch: 'Shí Zì Shǒu' },
+          { nummer: 48, deutsch: 'Den Tiger umarmen, zum Berg zurückkehren', chinesisch: 'Bào Hǔ Guī Shān' },
+          { nummer: 49, deutsch: 'Schräge einfache Peitsche', chinesisch: 'Xié Dān Biān' },
+          { nummer: 50, deutsch: 'Die wilde Mähne teilen (rechts)', chinesisch: 'Yòu Yě Mǎ Fēn Zōng' },
+          { nummer: 51, deutsch: 'Die wilde Mähne teilen (links)', chinesisch: 'Zuǒ Yě Mǎ Fēn Zōng' },
+          { nummer: 52, deutsch: 'Die wilde Mähne teilen (rechts)', chinesisch: 'Yòu Yě Mǎ Fēn Zōng' },
+        ],
+      },
+      {
+        title: 'Abschnitt B: Den Schweif des Vogels und Variationen (Formen 53–60)',
+        formen: [
+          { nummer: 53, deutsch: 'Den Schweif des Vogels fassen', chinesisch: 'Lǎn Què Wěi' },
+          { nummer: 54, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+          { nummer: 55, deutsch: 'Die schöne Dame am Webstuhl (erste Ecke)', chinesisch: 'Yù Nǚ Chuān Suō' },
+          { nummer: 56, deutsch: 'Die schöne Dame am Webstuhl (zweite Ecke)', chinesisch: 'Yù Nǚ Chuān Suō' },
+          { nummer: 57, deutsch: 'Die schöne Dame am Webstuhl (dritte Ecke)', chinesisch: 'Yù Nǚ Chuān Suō' },
+          { nummer: 58, deutsch: 'Die schöne Dame am Webstuhl (vierte Ecke)', chinesisch: 'Yù Nǚ Chuān Suō' },
+          { nummer: 59, deutsch: 'Den Schweif des Vogels fassen (links)', chinesisch: 'Lǎn Què Wěi Zuǒ' },
+          { nummer: 60, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+        ],
+      },
+      {
+        title: 'Abschnitt C: Schlange und goldener Hahn (Formen 61–68)',
+        formen: [
+          { nummer: 61, deutsch: 'Wolkenhände', chinesisch: 'Yún Shǒu' },
+          { nummer: 62, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+          { nummer: 63, deutsch: 'Herabsinken – die Schlange kriecht am Boden', chinesisch: 'Xià Shì' },
+          { nummer: 64, deutsch: 'Der goldene Hahn steht auf einem Bein (links)', chinesisch: 'Jīn Jī Dú Lì Zuǒ' },
+          { nummer: 65, deutsch: 'Der goldene Hahn steht auf einem Bein (rechts)', chinesisch: 'Jīn Jī Dú Lì Yòu' },
+          { nummer: 66, deutsch: 'Zurückweichen und den Affen abwehren', chinesisch: 'Dào Niǎn Hóu' },
+          { nummer: 67, deutsch: 'Schräges Fliegen', chinesisch: 'Xié Fēi Shì' },
+          { nummer: 68, deutsch: 'Die Hände heben', chinesisch: 'Tí Shǒu Shàng Shì' },
+        ],
+      },
+      {
+        title: 'Abschnitt D: Hohe Künste und Lotus (Formen 69–76)',
+        formen: [
+          { nummer: 69, deutsch: 'Der weiße Kranich breitet die Flügel aus', chinesisch: 'Bái Hè Liàng Chì' },
+          { nummer: 70, deutsch: 'Das Knie streifen und verdrehen (links)', chinesisch: 'Lōu Xī Ào Bù Zuǒ' },
+          { nummer: 71, deutsch: 'Die Nadel auf den Meeresgrund', chinesisch: 'Hǎi Dǐ Zhēn' },
+          { nummer: 72, deutsch: 'Den Rücken wie ein Fächer ausbreiten', chinesisch: 'Shàn Tōng Bèi' },
+          { nummer: 73, deutsch: 'Umdrehen und weißer Schlangenzunge', chinesisch: 'Zhuǎn Shēn Bái Shé Tǔ Xìn' },
+          { nummer: 74, deutsch: 'Schritt vor, abwehren, abfangen, stoßen', chinesisch: 'Jìn Bù Bān Lán Chuí' },
+          { nummer: 75, deutsch: 'Aufsteigen und den Schweif des Vogels fassen', chinesisch: 'Shàng Bù Lǎn Què Wěi' },
+          { nummer: 76, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+        ],
+      },
+      {
+        title: 'Abschnitt E: Finale und Abschluss (Formen 77–81)',
+        formen: [
+          { nummer: 77, deutsch: 'Wolkenhände', chinesisch: 'Yún Shǒu' },
+          { nummer: 78, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+          { nummer: 79, deutsch: 'Hoher Schlag auf das Pferd mit durchdringender Handfläche', chinesisch: 'Gāo Tàn Mǎ Dài Chuān Zhǎng' },
+          { nummer: 80, deutsch: 'Umdrehen und den Lotus treten', chinesisch: 'Zhuǎn Shēn Bǎi Lián' },
+          { nummer: 81, deutsch: 'Den Bogen spannen und auf den Tiger schießen', chinesisch: 'Wān Gōng Shè Hǔ' },
+        ],
+      },
+    ],
+  },
+  kursinhalt: {
+    title: 'Kursinhalt',
+    hinweis: 'Du wählst nach dem Kauf Deinen Atemtyp. Beide Varianten sind im Kurs enthalten – Du kannst jederzeit wechseln.',
+    tabs: [
+      {
+        name: '☽ Tai Chi Langform Teil III (lunar)',
+        lektionen: [
+          'Einführung & Wiederholung Teil I + II',
+          'Umdrehen und neue Richtungen – Formen 44–52',
+          'Den Schweif des Vogels und Variationen – Formen 53–60',
+          'Schlange und goldener Hahn – Formen 61–68',
+          'Hohe Künste und Lotus – Formen 69–76',
+          'Finale und Abschluss – Formen 77–81',
+          'Kompletter Durchlauf aller 81 Formen',
+        ],
+      },
+      {
+        name: '☀ Tai Chi Langform Teil III (solar)',
+        lektionen: [
+          'Einführung & Wiederholung Teil I + II',
+          'Umdrehen und neue Richtungen – Formen 44–52',
+          'Den Schweif des Vogels und Variationen – Formen 53–60',
+          'Schlange und goldener Hahn – Formen 61–68',
+          'Hohe Künste und Lotus – Formen 69–76',
+          'Finale und Abschluss – Formen 77–81',
+          'Kompletter Durchlauf aller 81 Formen',
+        ],
+      },
+    ],
+  },
+  voraussetzungen: {
+    title: 'Voraussetzungen',
+    punkte: ['Langform Teil I abgeschlossen', 'Langform Teil II abgeschlossen', 'Sichere Beherrschung der ersten 43 Formen'],
+    hinweis: 'Teil III ist der Abschluss der Langform. Du solltest Teil I und II sicher beherrschen, bevor Du hier beginnst.',
+  },
+  lehrer: {
+    name: 'Frieder Anders',
+    titel: 'Großmeister der 6. Generation der Yang-Familientradition',
+    text: 'Erster Europäer mit Meisterwürde in der Yang-Tradition (2002). 26 Jahre Ausbildung bei Meister Chu King-Hung. Über 50 Jahre Praxis. Entwickler des Atemtyp Tai Chi.',
+    imageSrc: '/images/meister-anders.jpg',
+    cta: { text: 'Mehr über den Meister', href: '/ueber-uns/meister' },
+  },
+  testimonials: [
+    {
+      name: 'Toni',
+      text: 'Ich finde die Lernvideos eine Super-Übungshilfe. Auch ich selbst profitiere nach über 10 Jahren Übungspraxis davon.',
+    },
+    {
+      name: 'Klaus',
+      text: 'Nach vielen Jahren Tai Chi entdecke ich in den Lernvideos immer wieder neue Einzelheiten, vor allem in den Übergängen.',
+    },
+    {
+      name: 'Ben',
+      text: 'Ich kann prima mit den Lernvideos lernen – ich übe kaum Fehler ein!',
+    },
+  ],
+  faq: [
+    {
+      question: 'Kann ich Teil III ohne Teil I und II machen?',
+      answer: 'Nein, Teil III ist der Abschluss der Langform. Du benötigst Teil I und Teil II als Voraussetzung.',
+    },
+    {
+      question: 'Wie lange ist die komplette Langform, wenn ich sie beherrsche?',
+      answer: 'Ein vollständiger Durchlauf der 81 Formen dauert etwa 20–25 Minuten, je nach Tempo.',
+    },
+    {
+      question: 'Bekomme ich beide Atemtyp-Varianten?',
+      answer: 'Ja! Der Kurs enthält sowohl die lunare als auch die solare Variante.',
+    },
+    {
+      question: 'Wie lange habe ich Zugang?',
+      answer: 'Lebenslang. Einmal gekauft, bleibt der Kurs dauerhaft in Deinem Konto.',
+    },
+    {
+      question: 'Was kommt nach der Langform?',
+      answer: 'Die Vertiefungsstufen – die „7 Tore zur inneren Kraft". Hier beginnt die innere Arbeit, die über die äußere Form hinausgeht.',
+    },
+    {
+      question: 'Gibt es eine Zertifizierung nach Abschluss?',
+      answer: 'Der Online-Kurs selbst enthält keine Zertifizierung. Wenn Du eine offizielle Anerkennung anstrebst, empfehlen wir die Kursleiter- oder Lehrer-Ausbildung in Präsenz.',
+    },
+  ],
+  preisoptionen: {
+    title: 'Wähle Deine Option',
+    optionen: [
+      {
+        title: 'Einmalzahlung',
+        preis: '€199',
+        beschreibung: 'Einmalig, lebenslanger Zugang',
+        vorteil: 'Günstigster Gesamtpreis',
+        cta: { text: 'Jetzt kaufen', href: '#' },
+      },
+      {
+        title: 'Ratenzahlung',
+        preis: '€19/Monat',
+        beschreibung: '12 Monate, dann lebenslanger Zugang',
+        vorteil: 'Flexibel starten',
+        cta: { text: 'Mit Ratenzahlung starten', href: '#' },
+      },
+    ],
+    paketTip: {
+      title: '💡 DU HAST SCHON TEIL I UND II?',
+      desc: 'Dann ist dies der letzte Schritt zur vollständigen Form!',
+      preis: '',
+      cta: { text: '', href: '#' },
+    },
+    wienRabatt: {
+      title: '🎁 FÜR WIEN-KURSTEILNEHMER',
+      desc: 'Du besuchst einen Präsenzkurs in Wien? Dann erhältst Du 50% Rabatt auf alle Online-Kurse.',
+      cta: { text: 'Rabattcode anfordern', href: '#' },
+    },
+  },
+  naechsterSchritt: {
+    title: 'Nach der Langform: Die innere Arbeit beginnt',
+    kurse: [
+      {
+        name: 'Die 7 Tore zur inneren Kraft',
+        desc: 'Die Vertiefungsstufen – entwickle wahre innere Kraft',
+        preis: 'ab €399 pro Tor',
+      },
+      {
+        name: 'Meisterpaket',
+        desc: 'Alle 7 Vertiefungsstufen zum Vorteilspreis',
+        preis: '€2.299',
+      },
+    ],
+    beschreibung: 'Mit der Langform hast Du die äußere Form gemeistert. Jetzt beginnt der Weg nach innen: Die Vertiefungsstufen zeigen Dir, wie Du die Prinzipien des Tai Chi verkörperst – Yin-Yang-Form, Zentrumsbewegung, Bein- und Armspirale, Halsspirale, wahrer Atem und die Verfeinerung in den Füßen.\n\nDies ist der Weg, den nur wenige gehen – und der zur echten Meisterschaft führt.',
+  },
+  finalCTA: {
+    title: 'Bereit für die Vollendung?',
+    preis: '€199',
+    preisAbo: 'oder €19/Monat',
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+  },
+}

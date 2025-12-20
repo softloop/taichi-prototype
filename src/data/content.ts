@@ -56,7 +56,7 @@ export const homepage = {
         price: 'KOSTENLOS',
         desc: 'Der perfekte Einstieg – 10 Videos für Deinen Atemtyp',
         features: ['10 Videos', 'Für beide Atemtypen'],
-        cta: { text: 'Jetzt kostenlos starten', href: '/kurse/online' },
+        cta: { text: 'Jetzt kostenlos starten', href: '/kurse/online/kurzform' },
       },
       {
         number: 2,
@@ -64,7 +64,7 @@ export const homepage = {
         price: 'ab €399',
         desc: 'Die klassische Yang-Form in drei Teilen: Erde, Himmel, Mensch',
         features: ['81 Formen', '3 Teile'],
-        cta: { text: 'Mehr erfahren', href: '/kurse/online' },
+        cta: { text: 'Mehr erfahren', href: '/kurse/online#langform' },
       },
       {
         number: 3,
@@ -72,7 +72,7 @@ export const homepage = {
         price: '€2.299',
         desc: 'Die 7 Tore zur inneren Kraft – alle Geheimnisse der Meister',
         features: ['7 Tore', 'Komplettpaket'],
-        cta: { text: 'Meisterpaket ansehen', href: '/kurse/online' },
+        cta: { text: 'Meisterpaket ansehen', href: '/kurse/online#vertiefung' },
       },
     ],
   },

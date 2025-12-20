@@ -1,5 +1,3 @@
-import Button from '@/components/ui/Button'
-
 interface AtemtypVariantenCardProps {
   symbol: string
   name: string
