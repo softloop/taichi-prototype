@@ -1,8 +1,5 @@
 'use client'
 
-import { useState } from 'react'
-import Button from '@/components/ui/Button'
-
 interface BlogFilterProps {
   jahre: string[]
   themen: string[]
@@ -88,5 +85,8 @@ export default function BlogFilter({
     </div>
   )
 }
+
+
+
 
 

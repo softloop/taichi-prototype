@@ -231,7 +231,15 @@ export default function OnlineKursePage() {
             className="mb-8 text-center"
           />
           <div className="mx-auto max-w-3xl">
-            <BuchCard {...onlineKurseDetail.buch} />
+            <BuchCard
+              titel={onlineKurseDetail.buch.titel}
+              untertitel={onlineKurseDetail.buch.untertitel}
+              autor={onlineKurseDetail.buch.autor}
+              verlag={onlineKurseDetail.buch.verlag}
+              jahr={onlineKurseDetail.buch.jahr}
+              beschreibung={onlineKurseDetail.buch.beschreibung}
+              cta={onlineKurseDetail.buch.cta}
+            />
           </div>
         </Container>
       </Section>

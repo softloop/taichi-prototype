@@ -25,3 +25,5 @@ export default function PaketCard({ name, inhalt, statt, preis }: PaketCardProps
 
 
 
+
+

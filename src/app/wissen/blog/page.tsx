@@ -5,11 +5,10 @@ import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
 import Grid from '@/components/layout/Grid'
 import Button from '@/components/ui/Button'
-import Tag from '@/components/ui/Tag'
 import BlogCard from '@/components/features/BlogCard'
 import BlogFilter from '@/components/features/BlogFilter'
 import { blogDetail } from '@/data/content'
-import { blogPosts, blogArchive, blogThemenCounts, BlogPost } from '@/data/blog'
+import { blogPosts, blogThemenCounts } from '@/data/blog'
 
 export default function BlogPage() {
   const [selectedJahr, setSelectedJahr] = useState('Alle')

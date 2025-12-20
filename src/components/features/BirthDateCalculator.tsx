@@ -22,8 +22,6 @@ export default function BirthDateCalculator({ onResult }: BirthDateCalculatorPro
     // Parse the date string (format: YYYY-MM-DD)
     const date = new Date(birthDate)
     const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
     
     // Calculate day of year (1-365/366)
     const startOfYear = new Date(year, 0, 1)
@@ -154,5 +152,8 @@ export default function BirthDateCalculator({ onResult }: BirthDateCalculatorPro
     </>
   )
 }
+
+
+
 
 

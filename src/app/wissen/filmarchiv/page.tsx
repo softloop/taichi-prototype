@@ -9,7 +9,6 @@ import Button from '@/components/ui/Button'
 import VideoFilter from '@/components/features/VideoFilter'
 import FeaturedVideo from '@/components/features/FeaturedVideo'
 import VideoCardExtended from '@/components/features/VideoCardExtended'
-import ImageTextSection from '@/components/features/ImageTextSection'
 import { filmarchivDetail } from '@/data/content'
 
 export default function FilmarchivPage() {

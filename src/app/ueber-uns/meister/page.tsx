@@ -1,6 +1,5 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
-import ImageTextSection from '@/components/features/ImageTextSection'
 import VideoPlaceholder from '@/components/features/VideoPlaceholder'
 import BuchCard from '@/components/features/BuchCard'
 import HighlightBox from '@/components/features/HighlightBox'

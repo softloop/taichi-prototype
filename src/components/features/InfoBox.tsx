@@ -14,3 +14,5 @@ export default function InfoBox({ title, content }: InfoBoxProps) {
 
 
 
+
+

@@ -1,6 +1,5 @@
 import Container from '@/components/layout/Container'
 import Section from '@/components/layout/Section'
-import ImageTextSection from '@/components/features/ImageTextSection'
 import Button from '@/components/ui/Button'
 import Card from '@/components/ui/Card'
 import { traditionDetail } from '@/data/content'
