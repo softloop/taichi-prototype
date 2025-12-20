@@ -10,7 +10,7 @@ export const homepage = {
   trustBar: [
     { icon: '🏆', text: '50+ Jahre Yang-Stil Erfahrung' },
     { icon: '🎓', text: '6. Generation Yang-Familientradition' },
-    { icon: '🌍', text: 'Erster Europäer mit Meisterwürde' },
+    { icon: '👥', text: 'Mehr als 5.000 Schüler' },
   ],
   problemSolution: {
     title: 'Tai Chi für Menschen, die mehr wollen',
