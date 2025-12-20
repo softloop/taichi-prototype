@@ -1,4 +1,6 @@
-import { ReactNode } from 'react'
+'use client'
+
+import { ReactNode, useState } from 'react'
 import Button from '@/components/ui/Button'
 
 interface ImageTextSectionProps {
@@ -20,14 +22,21 @@ export default function ImageTextSection({
   imageSrc,
   imageAlt,
 }: ImageTextSectionProps) {
+  const [imageError, setImageError] = useState(false)
+
   const imagePlaceholder = (
     <div className="aspect-video w-full rounded-lg bg-background-alt flex items-center justify-center">
-      <span className="text-dark/40 text-sm">Bildplatzhalter</span>
+      <span className="text-6xl text-dark/30">📷</span>
     </div>
   )
 
-  const image = imageSrc ? (
-    <img src={imageSrc} alt={imageAlt || title} className="w-full rounded-lg object-cover" />
+  const image = imageSrc && !imageError ? (
+    <img
+      src={imageSrc}
+      alt={imageAlt || title}
+      className="w-full rounded-lg object-cover"
+      onError={() => setImageError(true)}
+    />
   ) : (
     imagePlaceholder
   )
@@ -40,7 +49,9 @@ export default function ImageTextSection({
         </p>
       )}
       <h2 className="mb-4 font-display text-3xl font-normal text-dark md:text-4xl">{title}</h2>
-      <div className="mb-6 text-lg leading-relaxed text-dark/80">{desc}</div>
+      <div className="mb-6 text-lg leading-relaxed text-dark/80 whitespace-pre-line">
+        {desc}
+      </div>
       {cta.text && (
         <Button href={cta.href} variant="primary">
           {cta.text}

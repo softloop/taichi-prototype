@@ -69,7 +69,9 @@ export default function Footer() {
           {/* Kurse */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-dark">
-              {menuItems.kurse.label}
+              <Link href="/kurse" className="hover:text-primary transition-colors">
+                {menuItems.kurse.label}
+              </Link>
             </h4>
             <ul className="space-y-2 text-sm text-dark/70">
               {menuItems.kurse.items.map((item) => (
@@ -85,7 +87,9 @@ export default function Footer() {
           {/* Methode */}
           <div>
             <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-dark">
-              {menuItems.methode.label}
+              <Link href="/methode" className="hover:text-primary transition-colors">
+                {menuItems.methode.label}
+              </Link>
             </h4>
             <ul className="space-y-2 text-sm text-dark/70">
               {menuItems.methode.items.map((item) => (

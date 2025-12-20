@@ -12,7 +12,7 @@ export const kurzform = {
   ],
   desc: 'Starte Deine Tai-Chi-Reise mit unserer Kurzform – eine kraftvolle Einführung in vier Grundbewegungen, wiederholt in acht Sequenzen. Ohne Vorkenntnisse tauchst Du tief in das Tai Chi ein und legst das Fundament für fortgeschrittene Praktiken.',
   lerndauer: 'ca. 10 Wochen',
-  cta: { text: 'Jetzt kostenlos starten', href: '/kurse/online' },
+  cta: { text: 'Zum Kurs', href: '/kurse/online/kurzform' },
 }
 
 export const onlineKurseDetail = {
@@ -51,7 +51,7 @@ export const onlineKurseDetail = {
         bonus: '2 Übungshefte (PDF), 2 Bonus-Videos',
         priceAbo: '€19/Monat',
         priceEinmalig: '€199 einmalig',
-        cta: { text: 'Zum Kurs →', href: '#' },
+        cta: { text: 'Zum Kurs →', href: '/kurse/online/langform/teil-i' },
       },
       {
         part: 'Teil II',
@@ -910,6 +910,479 @@ export const praesenzCourses = [
   { title: 'Lehrer-Ausbildung', price: '€4.999', desc: 'Umfassende Ausbildung zum zertifizierten Lehrer', date: 'Auf Anfrage', duration: '2 Jahre' },
 ]
 
+export const kurzformDetail = {
+  hero: {
+    breadcrumb: [
+      { label: 'Kurse', href: '/kurse' },
+      { label: 'Online', href: '/kurse/online' },
+      { label: 'Kurzform', href: '/kurse/online/kurzform' },
+    ],
+    label: '🎁 KOSTENLOS',
+    title: 'Tai Chi Kurzform',
+    subtitle: 'Der perfekte Einstieg – für Deinen Atemtyp',
+    kurzbeschreibung: 'Lerne die vier Grundbewegungen des Yang-Stils in acht Wiederholungen. Keine Vorkenntnisse nötig.',
+    bewertung: {
+      stars: 5,
+      rating: '5.0',
+      teilnehmer: 127,
+    },
+    preis: {
+      aktuell: 'Kostenlos',
+      alt: '€99',
+    },
+    cta: { text: 'Jetzt kostenlos starten', href: '#' },
+    vertrauen: ['Sofort Zugang', 'Kein Abo', 'Lebenslang verfügbar'],
+    videoPreview: {
+      title: 'Einführungsvideo / Trailer',
+      dauer: '2 Min.',
+      videoSrc: '#',
+    },
+  },
+  quickFacts: [
+    { icon: '🎬', title: 'Videos', text: '2 × 10 Lektionen (lunar + solar)' },
+    { icon: '⏱️', title: 'Videodauer', text: 'ca. 2 Std. pro Atemtyp' },
+    { icon: '📅', title: 'Lernempfehlung', text: '10–15 Min./Tag für 8–10 Wochen' },
+    { icon: '📱', title: 'Zugang', text: 'Alle Geräte, lebenslang' },
+  ],
+  ueberKurs: {
+    title: 'Über diesen Kurs',
+    desc: 'Starte Deine Tai-Chi-Reise mit unserer Kurzform – eine kraftvolle Einführung in vier Grundbewegungen, wiederholt in acht Sequenzen. Ohne Vorkenntnisse tauchst Du tief in das Tai Chi ein und legst das Fundament für fortgeschrittene Praktiken.\n\nDieser Kurs bietet 10 präzise Videos, jedes etwa 13 Minuten lang, ergänzt durch einige »Dao-Übungen« (Qigong) und ein detailliertes Booklet, das Dir den Weg weist.\n\nDas Besondere: Du erhältst den kompletten Kurs in zwei Varianten – für lunare Einatmer und solare Ausatmer. So lernst Du von Anfang an die Bewegungen, die zu Deinem Körper passen.\n\nDein erster Schritt in eine Welt der inneren Stärke und Gelassenheit beginnt hier.',
+    imageSrc: '/images/kurzform-demo.jpg',
+  },
+  atemtypVarianten: {
+    title: 'Für DEINEN Atemtyp',
+    intro: 'Dieser Kurs enthält beide Atemtyp-Varianten. Nach der Anmeldung wählst Du Deinen Atemtyp und siehst die passenden Videos.',
+    varianten: [
+      {
+        symbol: '☽',
+        name: 'Lunar (Einatmer)',
+        eigenschaften: ['Aufrechte Haltung', 'Energie steigt nach oben', 'Braucht die Fülle'],
+        lektionen: 10,
+      },
+      {
+        symbol: '☀',
+        name: 'Solar (Ausatmer)',
+        eigenschaften: ['Leicht geneigte Haltung', 'Energie sinkt zur Erde', 'Braucht die Leere'],
+        lektionen: 10,
+      },
+    ],
+    cta: { text: 'Welcher Atemtyp bin ich?', href: '/methode/test' },
+  },
+  wasDuBekommst: {
+    kursinhalte: [
+      { icon: '🎬', text: '10 Lektionen für Einatmer (lunar)' },
+      { icon: '🎬', text: '10 Lektionen für Ausatmer (solar)' },
+      { icon: '🧘', text: 'Dao-Übungen (Qigong) zur Vorbereitung' },
+    ],
+    materialien: [
+      { icon: '📖', text: 'Übungsheft Kurzform (PDF)' },
+      { icon: '📖', text: 'Übungsheft Dao-Übungen (PDF)' },
+      { icon: '🔍', text: 'Online-Atemtyp-Test' },
+    ],
+    zugang: [
+      { icon: '🔓', text: 'Sofortiger Zugang nach Anmeldung' },
+      { icon: '♾️', text: 'Lebenslang verfügbar' },
+      { icon: '📱', text: 'Computer, Tablet & Smartphone' },
+    ],
+  },
+  kursinhalt: {
+    title: 'Kursinhalt',
+    hinweis: 'Du wählst nach der Anmeldung Deinen Atemtyp und siehst dann die passenden Lektionen. Beide Varianten sind im Kurs enthalten – Du kannst jederzeit wechseln.',
+    tabs: [
+      {
+        name: '☽ Tai Chi Kurzform (lunar)',
+        lektionen: [
+          'Einführung',
+          'Vorbereitung & Beginn',
+          'Peng (Fortsetzung)',
+          'Peng (Abschluss)',
+          'Lü, Ji, An',
+          'Wiederholung 2',
+          'Wiederholung 3',
+          'Wiederholung 4–5',
+          'Wiederholung 6–7',
+          'Abschluss',
+        ],
+      },
+      {
+        name: '☀ Tai Chi Kurzform (solar)',
+        lektionen: [
+          'Einführung',
+          'Vorbereitung & Beginn',
+          'Peng (Fortsetzung)',
+          'Peng (Abschluss)',
+          'Lü, Ji, An',
+          'Wiederholung 2',
+          'Wiederholung 3',
+          'Wiederholung 4–5',
+          'Wiederholung 6–7',
+          'Abschluss',
+        ],
+      },
+    ],
+  },
+  fuerWen: {
+    title: 'Dieser Kurs ist für Dich, wenn Du...',
+    punkte: [
+      'Tai Chi von Grund auf lernen möchtest',
+      'Noch keine Vorkenntnisse hast',
+      'Eine authentische Methode suchst, die zu Deinem Körper passt',
+      'Bereit bist, 10–15 Minuten täglich zu üben',
+    ],
+  },
+  lehrer: {
+    name: 'Frieder Anders',
+    titel: 'Großmeister der 6. Generation der Yang-Familientradition',
+    text: 'Erster Europäer mit Meisterwürde in der Yang-Tradition (2002). 26 Jahre Ausbildung bei Meister Chu King-Hung. Über 50 Jahre Praxis. Entwickler des Atemtyp Tai Chi.',
+    imageSrc: '/images/meister-anders.jpg',
+    cta: { text: 'Mehr über den Meister', href: '/ueber-uns/meister' },
+  },
+  testimonials: [
+    {
+      name: 'Toni',
+      text: 'Ich finde die Lernvideos eine Super-Übungshilfe. Auch ich selbst profitiere nach über 10 Jahren Übungspraxis davon.',
+    },
+    {
+      name: 'Klaus',
+      text: 'Nach vielen Jahren Tai Chi entdecke ich in den Lernvideos immer wieder neue Einzelheiten, vor allem in den Übergängen.',
+    },
+    {
+      name: 'Elisabeth',
+      text: 'Ich finde toll, wie die Unterschiede der Atemtypen dargestellt werden – eine große Hilfe für alle, die lernen!',
+    },
+    {
+      name: 'Katharina',
+      text: 'Ich empfehle die Lernvideos meinen Schülerinnen und Schülern als perfekte Ergänzung zum Unterricht.',
+    },
+    {
+      name: 'Ina',
+      text: 'Mir gefallen besonders die sehr genauen und gut verständlichen Beschreibungen der Bewegungen für beide Atemtypen.',
+    },
+    {
+      name: 'Ben',
+      text: 'Ich kann prima mit den Lernvideos lernen – ich übe kaum Fehler ein!',
+    },
+  ],
+  faq: [
+    {
+      question: 'Brauche ich Vorkenntnisse?',
+      answer: 'Nein, der Kurs ist für absolute Anfänger konzipiert.',
+    },
+    {
+      question: 'Wie finde ich meinen Atemtyp heraus?',
+      answer: 'Im Kurs gibt es einen Online-Test. Du kannst auch unseren Atemtyp-Test auf der Website machen.',
+    },
+    {
+      question: 'Bekomme ich beide Atemtyp-Varianten?',
+      answer: 'Ja! Der Kurs enthält sowohl die lunare als auch die solare Variante. Du wählst nach der Anmeldung Deinen Atemtyp, kannst aber jederzeit auch die andere Variante ansehen.',
+    },
+    {
+      question: 'Wie lange habe ich Zugang?',
+      answer: 'Lebenslang. Einmal freigeschaltet, bleibt der Kurs dauerhaft verfügbar.',
+    },
+    {
+      question: 'Wie viel Zeit brauche ich?',
+      answer: 'Die Videos haben zusammen ca. 2 Stunden (pro Atemtyp). Wir empfehlen 10–15 Minuten tägliches Üben. Die Kurzform selbst dauert später nur 3–4 Minuten.',
+    },
+    {
+      question: 'Gibt es weiterführende Kurse?',
+      answer: 'Ja! Nach der Kurzform kannst Du mit der Langform (Teil I–III) und den 7 Vertiefungsstufen weitermachen.',
+    },
+  ],
+  naechsterSchritt: {
+    title: 'Dein nächster Schritt',
+    kurs: {
+      name: 'Langform Teil I',
+      desc: 'Die Verwurzelung – 13 Formen der „Erde"',
+      preis: '€199 oder €19/Monat',
+    },
+    hinweis: 'Kein Druck – manche üben die Kurzform jahrelang. Sie enthält die Essenz des gesamten Yang-Stils.',
+  },
+  finalCTA: {
+    title: 'Bereit anzufangen?',
+    preis: 'Kostenlos',
+    cta: { text: 'Jetzt kostenlos starten', href: '#' },
+    vertrauen: ['Kein Abo', 'Keine Kreditkarte', 'Sofort Zugang'],
+  },
+}
+
+export const langformTeilIDetail = {
+  hero: {
+    breadcrumb: [
+      { label: 'Kurse', href: '/kurse' },
+      { label: 'Online', href: '/kurse/online' },
+      { label: 'Langform Teil I', href: '/kurse/online/langform/teil-i' },
+    ],
+    label: 'ERDE · GRUNDLAGE',
+    title: 'Tai Chi Langform Teil I',
+    subtitle: 'Die Verwurzelung – 13 Formen der „Erde"',
+    kurzbeschreibung: 'Der erste Teil der klassischen Yang-Langform. Lerne die Grundlage für alle weiteren Formen und entwickle einen verwurzelten Stand.',
+    bewertung: {
+      stars: 5,
+      rating: '5.0',
+      teilnehmer: 84,
+    },
+    preis: {
+      aktuell: '€199',
+      abo: 'oder €19/Monat',
+    },
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+    videoPreview: {
+      title: 'Einführungsvideo / Trailer',
+      dauer: '',
+      videoSrc: '#',
+    },
+  },
+  quickFacts: [
+    { icon: '🎬', title: 'Videos', text: '2 × 13+ Lektionen (lunar + solar)' },
+    { icon: '⏱️', title: 'Videodauer', text: 'ca. 4–5 Std. pro Atemtyp' },
+    { icon: '📅', title: 'Lernempfehlung', text: '10–12 Wochen bei täglicher Übung' },
+    { icon: '📱', title: 'Zugang', text: 'Alle Geräte, lebenslang' },
+  ],
+  ueberKurs: {
+    title: 'Über diesen Kurs',
+    desc: 'Der erste Teil der Langform entspricht dem Symbol der Erde – die Verwurzelung. Mit einem verwurzelten Stand lösen sich körperliche Spannungen auf natürliche Weise.\n\nDu lernst 13 Formen des authentischen Yang-Stils, Schritt für Schritt erklärt für Deinen Atemtyp. Die Bewegungen bauen aufeinander auf und vertiefen, was Du in der Kurzform gelernt hast.\n\nDas Besondere: Jede Form wird in zwei Varianten gezeigt – für lunare Einatmer und solare Ausatmer. So entwickelst Du von Anfang an die Haltung und Bewegungsqualität, die zu Deinem Körper passt.\n\nTeil I ist die Grundlage für die gesamte Langform. Nimm Dir Zeit – die Verwurzelung ist das Fundament für alles, was folgt.',
+    imageSrc: '/images/langform-teil-i.jpg',
+  },
+  dreiTeile: {
+    title: 'Die Langform im Überblick',
+    desc: 'Die Langform umfasst insgesamt 81 Formen, symbolisch unterteilt in Erde, Himmel und Mensch. Teil I legt das Fundament.',
+    teile: [
+      {
+        teil: 'Teil I',
+        symbol: '🜃',
+        name: 'Erde',
+        formen: '13 Formen',
+        status: '← Dieser Kurs',
+        active: true,
+      },
+      {
+        teil: 'Teil II',
+        symbol: '☁️',
+        name: 'Himmel',
+        formen: '30 Formen',
+        status: 'Nächster Schritt',
+        active: false,
+      },
+      {
+        teil: 'Teil III',
+        symbol: '👤',
+        name: 'Mensch',
+        formen: '38 Formen',
+        status: 'Fortgeschritten',
+        active: false,
+      },
+    ],
+  },
+  atemtypVarianten: {
+    title: 'Für DEINEN Atemtyp',
+    intro: 'Dieser Kurs enthält beide Atemtyp-Varianten. Nach dem Kauf wählst Du Deinen Atemtyp und siehst die passenden Videos.',
+    varianten: [
+      {
+        symbol: '☽',
+        name: 'Lunar (Einatmer)',
+        eigenschaften: ['Aufrechte Haltung', 'Energie steigt nach oben', 'Braucht die Fülle'],
+        lektionen: 13,
+      },
+      {
+        symbol: '☀',
+        name: 'Solar (Ausatmer)',
+        eigenschaften: ['Leicht geneigte Haltung', 'Energie sinkt zur Erde', 'Braucht die Leere'],
+        lektionen: 13,
+      },
+    ],
+    cta: { text: 'Welcher Atemtyp bin ich?', href: '/methode/test' },
+  },
+  wasDuBekommst: {
+    kursinhalte: [
+      { icon: '🎬', text: '13+ Lektionen für Einatmer (lunar)' },
+      { icon: '🎬', text: '13+ Lektionen für Ausatmer (solar)' },
+      { icon: '🧘', text: 'Vorbereitende Dao-Übungen (Qigong)' },
+    ],
+    materialien: [
+      { icon: '📖', text: 'Übungsheft Langform Teil I (PDF)' },
+      { icon: '📋', text: 'Formenliste mit Beschreibungen' },
+      { icon: '🔍', text: 'Online-Atemtyp-Test' },
+    ],
+    zugang: [
+      { icon: '🔓', text: 'Sofortiger Zugang nach Kauf' },
+      { icon: '♾️', text: 'Lebenslang verfügbar' },
+      { icon: '🎁', text: '50% Rabatt für Wien-Kursteilnehmer' },
+    ],
+  },
+  formen: {
+    title: 'Die Formen in Teil I',
+    hinweis: 'Die Formen werden Schritt für Schritt in einzelnen Lektionen erklärt – mit Detailansichten, Wiederholungen und Erklärungen für beide Atemtypen.',
+    formenListe: [
+      { nummer: 1, deutsch: 'Vorbereitung', chinesisch: 'Yù Bèi Shì' },
+      { nummer: 2, deutsch: 'Beginn', chinesisch: 'Qǐ Shì' },
+      { nummer: 3, deutsch: 'Den Schweif des Vogels fassen (links)', chinesisch: 'Lǎn Què Wěi Zuǒ' },
+      { nummer: 4, deutsch: 'Den Schweif des Vogels fassen (rechts)', chinesisch: 'Lǎn Què Wěi Yòu' },
+      { nummer: 5, deutsch: 'Einfache Peitsche', chinesisch: 'Dān Biān' },
+      { nummer: 6, deutsch: 'Die Hände heben', chinesisch: 'Tí Shǒu Shàng Shì' },
+      { nummer: 7, deutsch: 'Der weiße Kranich breitet die Flügel aus', chinesisch: 'Bái Hè Liàng Chì' },
+      { nummer: 8, deutsch: 'Das Knie streifen und verdrehen (links)', chinesisch: 'Lōu Xī Ào Bù Zuǒ' },
+      { nummer: 9, deutsch: 'Hand wie eine Laute', chinesisch: 'Shǒu Huī Pípá' },
+      { nummer: 10, deutsch: 'Das Knie streifen und verdrehen (links, rechts, links)', chinesisch: 'Lōu Xī Ào Bù' },
+      { nummer: 11, deutsch: 'Schritt vor, abwehren, abfangen, stoßen', chinesisch: 'Jìn Bù Bān Lán Chuí' },
+      { nummer: 12, deutsch: 'Wie versiegelt, wie verschlossen', chinesisch: 'Rú Fēng Sì Bì' },
+      { nummer: 13, deutsch: 'Die Hände kreuzen', chinesisch: 'Shí Zì Shǒu' },
+    ],
+  },
+  kursinhalt: {
+    title: 'Kursinhalt',
+    hinweis: 'Du wählst nach dem Kauf Deinen Atemtyp. Beide Varianten sind im Kurs enthalten – Du kannst jederzeit wechseln.',
+    tabs: [
+      {
+        name: '☽ Tai Chi Langform Teil I (lunar)',
+        lektionen: [
+          'Einführung & Vorbereitung',
+          'Beginn (Qǐ Shì)',
+          'Den Schweif des Vogels fassen – links (Teil 1)',
+          'Den Schweif des Vogels fassen – links (Teil 2)',
+          'Den Schweif des Vogels fassen – rechts',
+          'Einfache Peitsche',
+          'Die Hände heben',
+          'Der weiße Kranich breitet die Flügel aus',
+          'Das Knie streifen (links)',
+          'Hand wie eine Laute',
+          'Das Knie streifen (Sequenz)',
+          'Schritt vor, abwehren, abfangen, stoßen',
+          'Wie versiegelt, wie verschlossen',
+          'Die Hände kreuzen',
+          'Teil I komplett – Durchlauf',
+        ],
+      },
+      {
+        name: '☀ Tai Chi Langform Teil I (solar)',
+        lektionen: [
+          'Einführung & Vorbereitung',
+          'Beginn (Qǐ Shì)',
+          'Den Schweif des Vogels fassen – links (Teil 1)',
+          'Den Schweif des Vogels fassen – links (Teil 2)',
+          'Den Schweif des Vogels fassen – rechts',
+          'Einfache Peitsche',
+          'Die Hände heben',
+          'Der weiße Kranich breitet die Flügel aus',
+          'Das Knie streifen (links)',
+          'Hand wie eine Laute',
+          'Das Knie streifen (Sequenz)',
+          'Schritt vor, abwehren, abfangen, stoßen',
+          'Wie versiegelt, wie verschlossen',
+          'Die Hände kreuzen',
+          'Teil I komplett – Durchlauf',
+        ],
+      },
+    ],
+  },
+  voraussetzungen: {
+    title: 'Voraussetzungen',
+    punkte: [
+      'Kurzform abgeschlossen (oder vergleichbare Grundkenntnisse)',
+      'Atemtyp bekannt',
+      'Bereitschaft zu regelmäßiger Übung (10–15 Min./Tag)',
+    ],
+    hinweis: 'Du kannst Teil I auch ohne die Kurzform beginnen, aber wir empfehlen, zuerst die kostenlose Kurzform zu absolvieren.',
+    kurzformLink: { text: 'kostenlose Kurzform', href: '/kurse/online/kurzform' },
+  },
+  lehrer: {
+    name: 'Frieder Anders',
+    titel: 'Großmeister der 6. Generation der Yang-Familientradition',
+    text: 'Erster Europäer mit Meisterwürde in der Yang-Tradition (2002). 26 Jahre Ausbildung bei Meister Chu King-Hung. Über 50 Jahre Praxis. Entwickler des Atemtyp Tai Chi.',
+    imageSrc: '/images/meister-anders.jpg',
+    cta: { text: 'Mehr über den Meister', href: '/ueber-uns/meister' },
+  },
+  testimonials: [
+    {
+      name: 'Toni',
+      text: 'Ich finde die Lernvideos eine Super-Übungshilfe. Auch ich selbst profitiere nach über 10 Jahren Übungspraxis davon.',
+    },
+    {
+      name: 'Klaus',
+      text: 'Nach vielen Jahren Tai Chi entdecke ich in den Lernvideos immer wieder neue Einzelheiten, vor allem in den Übergängen.',
+    },
+    {
+      name: 'Elisabeth',
+      text: 'Ich finde toll, wie die Unterschiede der Atemtypen dargestellt werden – eine große Hilfe für alle, die lernen!',
+    },
+  ],
+  faq: [
+    {
+      question: 'Brauche ich die Kurzform vorher?',
+      answer: 'Wir empfehlen es, aber es ist keine zwingende Voraussetzung. Die Kurzform ist kostenlos und bereitet Dich optimal vor.',
+    },
+    {
+      question: 'Was ist der Unterschied zwischen Kurzform und Langform?',
+      answer: 'Die Kurzform enthält 4 Grundbewegungen in 8 Wiederholungen – eine kompakte Einführung. Die Langform umfasst 81 Formen und geht viel tiefer in die Bewegungsqualität und innere Arbeit.',
+    },
+    {
+      question: 'Bekomme ich beide Atemtyp-Varianten?',
+      answer: 'Ja! Der Kurs enthält sowohl die lunare als auch die solare Variante.',
+    },
+    {
+      question: 'Wie lange habe ich Zugang?',
+      answer: 'Lebenslang. Einmal gekauft, bleibt der Kurs dauerhaft in Deinem Konto.',
+    },
+    {
+      question: 'Kann ich in Raten zahlen?',
+      answer: 'Ja, Du kannst zwischen Einmalzahlung (€199) und monatlicher Zahlung (€19/Monat) wählen.',
+    },
+    {
+      question: 'Wie lange brauche ich für Teil I?',
+      answer: 'Bei täglicher Übung von 10–15 Minuten kannst Du Teil I in 10–12 Wochen abschließen. Nimm Dir aber die Zeit, die Du brauchst – es gibt keinen Zeitdruck.',
+    },
+    {
+      question: 'Gibt es Rabatt, wenn ich alle drei Teile kaufe?',
+      answer: 'Ja! Das Langform Komplett-Paket enthält alle drei Teile zum Vorteilspreis von €497 (statt €597).',
+    },
+  ],
+  preisoptionen: {
+    title: 'Wähle Deine Option',
+    optionen: [
+      {
+        title: 'Einmalzahlung',
+        preis: '€199',
+        beschreibung: 'Einmalig, lebenslanger Zugang',
+        vorteil: 'Günstigster Gesamtpreis',
+        cta: { text: 'Jetzt kaufen', href: '#' },
+      },
+      {
+        title: 'Ratenzahlung',
+        preis: '€19/Monat',
+        beschreibung: '12 Monate, dann lebenslanger Zugang',
+        vorteil: 'Flexibel starten',
+        cta: { text: 'Mit Ratenzahlung starten', href: '#' },
+      },
+    ],
+    paketTip: {
+      title: '💡 TIPP: LANGFORM KOMPLETT-PAKET',
+      desc: 'Alle drei Teile der Langform zum Vorteilspreis:',
+      preis: '€497 statt €597 (spare €100)',
+      cta: { text: 'Zum Komplett-Paket', href: '/kurse/online#langform' },
+    },
+    wienRabatt: {
+      title: '🎁 FÜR WIEN-KURSTEILNEHMER',
+      desc: 'Du besuchst einen Präsenzkurs in Wien? Dann erhältst Du 50% Rabatt auf alle Online-Kurse.',
+      cta: { text: 'Rabattcode anfordern', href: '#' },
+    },
+  },
+  naechsterSchritt: {
+    title: 'Dein nächster Schritt nach Teil I',
+    kurs: {
+      name: 'Langform Teil II',
+      desc: 'Der Himmel – 30 Formen, diagonale Richtungen, leichtere Bewegungen',
+      preis: '€199 oder €19/Monat',
+    },
+  },
+  finalCTA: {
+    title: 'Bereit für die Verwurzelung?',
+    preis: '€199',
+    preisAbo: 'oder €19/Monat',
+    cta: { text: 'Jetzt starten', href: '#' },
+    vertrauen: ['Lebenslanger Zugang', 'Beide Atemtypen', 'Ratenzahlung möglich'],
+  },
+}
 
 
 
