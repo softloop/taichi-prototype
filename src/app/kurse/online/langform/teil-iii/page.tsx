@@ -246,7 +246,6 @@ export default function LangformTeilIIIPage() {
               <InfoBox
                 title={langformTeilIIIDetail.preisoptionen.paketTip.title}
                 content={langformTeilIIIDetail.preisoptionen.paketTip.desc}
-                type="info"
               />
             </div>
           )}
@@ -255,7 +254,6 @@ export default function LangformTeilIIIPage() {
             <InfoBox
               title={langformTeilIIIDetail.preisoptionen.wienRabatt.title}
               content={langformTeilIIIDetail.preisoptionen.wienRabatt.desc}
-              type="info"
               cta={langformTeilIIIDetail.preisoptionen.wienRabatt.cta}
             />
           </div>

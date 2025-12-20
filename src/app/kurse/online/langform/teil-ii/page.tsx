@@ -244,7 +244,6 @@ export default function LangformTeilIIPage() {
             <InfoBox
               title={langformTeilIIDetail.preisoptionen.wienRabatt.title}
               content={langformTeilIIDetail.preisoptionen.wienRabatt.desc}
-              type="info"
               cta={langformTeilIIDetail.preisoptionen.wienRabatt.cta}
             />
           </div>
