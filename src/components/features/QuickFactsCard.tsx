@@ -14,3 +14,4 @@ export default function QuickFactsCard({ icon, title, text }: QuickFactsCardProp
   )
 }
 
+
