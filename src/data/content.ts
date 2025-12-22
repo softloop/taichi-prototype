@@ -945,7 +945,7 @@ export const lehrerDetail = {
       },
       {
         name: 'Dardo Lessmann',
-        zertifizierung: 'Zertifizierter Lehrer',
+        zertifizierung: 'Meister, zertifizierter Lehrer',
         region: 'Frankfurt am Main',
         angebot: ['Wochenkurse', 'Tai-Chi-Unterricht'],
         kontakt: 'info@taiji-wolkentor.de',
@@ -954,7 +954,7 @@ export const lehrerDetail = {
       },
       {
         name: 'Toni Ananiadis',
-        zertifizierung: 'Zertifizierter Lehrer',
+        zertifizierung: 'Meister, zertifizierter Lehrer',
         region: 'Frankfurt am Main',
         angebot: ['Wochenkurse', 'Tai-Chi-Unterricht'],
         kontakt: 'verein@taijiakademie.de · Tel. 069-72 73 78',
