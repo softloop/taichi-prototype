@@ -1221,6 +1221,13 @@ export const buecherDetail = {
     title: 'Auf einen Blick',
     vergleich: [
       {
+        buch: 'Die sieben Tore zur inneren Kraft',
+        typ: 'Fachbuch',
+        thema: 'Atemenergetik & Biomechanik',
+        niveau: 'Fortgeschritten',
+        preis: '€18,90',
+      },
+      {
         buch: 'Atemtyp Tai Chi',
         typ: 'Lehrbuch',
         thema: 'Tai Chi Langform',
