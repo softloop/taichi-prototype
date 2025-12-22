@@ -33,8 +33,6 @@ export default function PraesenzKursCard({
   tags,
   title,
   subtitle,
-  leitung,
-  ort,
   termine,
   uhrzeit,
   dauer,
