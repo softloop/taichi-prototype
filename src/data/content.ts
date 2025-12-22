@@ -1041,7 +1041,7 @@ export const lehrerDetail = {
       dauer: '4 Wochenenden + Praxis',
       ort: 'Wien + Online',
       voraussetzung: 'Kurzform beherrschen, mind. 1 Jahr Praxis',
-      preis: '€990',
+      preis: 'Auf Anfrage',
       abschluss: 'Zertifikat »Kursleiter/in AtemtypTaiChi Kurzform«',
       naechsterStart: '2026 (auf Anfrage)',
       cta: { text: 'Mehr erfahren →', href: 'mailto:info@tai-chi.academy' },

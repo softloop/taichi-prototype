@@ -723,7 +723,7 @@ export const praesenzKurseDetail = {
       dauer: '4 Wochenenden + Praxis',
       beschreibung: 'Lerne, die Kurzform AtemtypTaiChi zu unterrichten. Theorie, Didaktik und Praxis. Abschluss mit Zertifikat.',
       voraussetzung: 'Kurzform beherrschen, mind. 1 Jahr Praxis',
-      preis: '€990',
+      preis: 'Auf Anfrage',
       abschluss: 'Zertifikat »Kursleiter/in AtemtypTaiChi Kurzform«',
     },
     {
