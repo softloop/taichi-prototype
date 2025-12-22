@@ -60,12 +60,6 @@ export default function PraesenzKursCard({
       {/* Details */}
       <div className="mb-6 space-y-2 text-sm text-dark/80">
         <div>
-          <span className="font-semibold text-dark">👤 Leitung:</span> {leitung}
-        </div>
-        <div>
-          <span className="font-semibold text-dark">📍 Ort:</span> {ort}
-        </div>
-        <div>
           <span className="font-semibold text-dark">📅 Termine:</span> {termine}
         </div>
         {uhrzeit && (
