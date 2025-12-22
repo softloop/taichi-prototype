@@ -5,8 +5,6 @@ interface PraesenzKursCardProps {
   tags: { fuerWen: string; niveau: string; kursart: string }
   title: string
   subtitle: string
-  leitung: string
-  ort: string
   termine: string
   uhrzeit?: string
   dauer: string
