@@ -19,7 +19,7 @@ interface PraesenzKursCardProps {
 
 const tagLabels: Record<string, string> = {
   schueler: 'Schüler',
-  lehrer: 'Lehrer',
+  lehrer: 'Meister',
   meisterschueler: 'Meisterschüler',
   einsteiger: 'Einsteiger',
   fortgeschritten: 'Fortgeschritten',
