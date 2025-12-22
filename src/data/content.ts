@@ -1139,6 +1139,17 @@ export const buecherDetail = {
   section2: {
     buecher: [
       {
+        titel: 'Die sieben Tore zur inneren Kraft',
+        untertitel: 'Atemenergetik und Biomechanik in Tai Chi Chuan',
+        autor: 'Frieder Anders',
+        jahr: '2025',
+        verlag: 'Tredition',
+        preis: '€18,90',
+        beschreibung: 'Gekürzte Neuauflage von ›Taiji- Atemenergetik und Biomechanik‹ von 2009/2017. In diesem Buch erläutert Meister Frieder Anders die energetischen und biomechanischen Unterschiede der beiden Atemtypen, auch anhand von historischen Beispielen und in Bezug auf die sog. ›frühen Schriften‹ des Tai Chi Chuan und zeigt, als Essenz seiner über 50-jährigen Tai-Chi-Erfahrung, den Weg, wie die Tai-Chi-Praxis entsprechend dem individuellen Atemtyp aufgebaut sein muss, um innere Kraft zu entwickeln.',
+        themen: ['Atemtypen', 'Innere Kraft', 'Biomechanik', 'Atemenergetik', 'Tai Chi'],
+        cta: { text: 'Bei Tredition kaufen →', href: 'https://shop.tredition.com/booktitle/Die%5Fsieben%5FTore%5Fzur%5Finneren%5FKraft/W-205-517-134' },
+      },
+      {
         titel: 'Atemtyp Tai Chi – Die lange Yang-Form',
         untertitel: 'Lehrbuch mit Anleitungen',
         autor: 'Frieder Anders',
