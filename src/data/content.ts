@@ -61,7 +61,7 @@ export const homepage = {
       {
         number: 2,
         name: 'LANGFORM',
-        price: 'ab €399',
+        price: 'ab €199',
         desc: 'Die klassische Yang-Form in drei Teilen: Erde, Himmel, Mensch',
         features: ['81 Formen', '3 Teile'],
         cta: { text: 'Mehr erfahren', href: '/kurse/online#langform' },
